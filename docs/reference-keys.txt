@@ -1,0 +1,8 @@
+bar-plots
+simple-bar-plot
+line-plots
+simple-line-plot
+multiple-lines-plot
+scatter-plots
+simple-scatter-plot
+multiple-scatter-plot

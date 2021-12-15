@@ -1,0 +1,22 @@
+# Scatter plots
+
+## Simple scatter plot
+
+```{r}
+p <- ggplot(mtcars, aes(x = wt, y = mpg)) +
+  geom_point(alpha = .85) +
+  theme_rethink()
+
+ggplotly(p)
+```
+
+## Multiple scatter plot
+
+```{r}
+p <- ggplot(mtcars, aes(x = wt, y = mpg, color = factor(cyl))) +
+  geom_point(alpha = .85) +
+  scale_color_viridis(discrete = TRUE, option = "mako", end = .95) +
+  theme_rethink()
+
+ggplotly(p)
+```

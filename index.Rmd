@@ -1,0 +1,52 @@
+--- 
+title: "How to Visualize"
+author: "Rethink Priorities"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+# url: your book url like https://bookdown.org/yihui/bookdown
+# cover-image: path to the social sharing image like images/cover.jpg
+description: |
+  This is a collection of examples, color schemes, best practices, and tips to produce beautiful and informative data visualizations.
+link-citations: yes
+github-repo: rethinkpriorities/how-to-visualize
+---
+
+```{r, setup, include=FALSE}
+# Load packages
+library(tidyverse)
+library(viridis)
+library(plotly)
+
+theme_rethink <- function() {
+  theme(panel.background = element_rect(fill = "gray95"))
+}
+```
+
+# About {-}
+
+This is a book to organize our knowledge of data visualization and to provide example code that can be reused in various Rethink Priorities projects.
+
+There are several important goals we're hoping to achieve with this book:
+
+1. Establish a knowledge base about how to best represent different types of data
+2. Provide examples of code that can be copy-pasted and adjusted to suit common data visualization needs
+3. Establish different color palettes that can be consistently used within and between Rethink Priorities projects
+4. Be inclusive by designing responsive and color-blind friendly graphs
+
+If you have feedback, please contact any of the people below or create an issue
+on the [GitHub repository](https://github.com/rethinkpriorities/how-to-visualize/issues).
+
+## Contributions {-}
+
+Please add yourself to the list below to acknowledge your contributions.
+
+- Willem Sleegers: [willem@rethinkpriorities.org](mailto:willem@rethinkpriorities.org)
+
+```{r include=FALSE}
+# Automatically create a bib database for R packages
+knitr::write_bib(
+  x = c(.packages(), "bookdown", "knitr", "rmarkdown"), file = "packages.bib"
+)
+```
