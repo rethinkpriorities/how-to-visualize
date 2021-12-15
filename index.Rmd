@@ -24,7 +24,9 @@ theme_rethink <- function() {
 }
 ```
 
-# About {-}
+# How to Visualize {-}
+
+## About {-}
 
 This is a book to organize our knowledge of data visualization and to provide example code that can be reused in various Rethink Priorities projects.
 

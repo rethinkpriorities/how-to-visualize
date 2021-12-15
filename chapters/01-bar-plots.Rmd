@@ -7,7 +7,7 @@ p <- ggplot(mpg, aes(x = class, color = class, fill = class)) +
   geom_bar(alpha = .75) +
   scale_color_viridis(discrete = TRUE, option = "mako", end = .95) +
   scale_fill_viridis(discrete = TRUE, option = "mako", end = .95) +
-  theme_minimal()
+  theme_rethink()
 
 ggplotly(p, tooltip = "x")
 ```
