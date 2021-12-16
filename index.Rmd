@@ -26,6 +26,10 @@ theme_rethink <- function() {
 
 # How to Visualize {-}
 
+## Important
+
+This is a work in progress! At this point I would not even call it an alpha, so please be patient while we finalize this book!
+
 ## About {-}
 
 This is a book to organize our knowledge of data visualization and to provide example code that can be reused in various Rethink Priorities projects.
