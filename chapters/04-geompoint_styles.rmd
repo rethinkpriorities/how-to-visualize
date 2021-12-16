@@ -1,0 +1,34 @@
+---
+output:
+  html_document:
+    code_folding: hide
+---
+  
+# Using geom_point
+  
+## Availability of different point styles
+Multiple different styles of point are available using the 'shape =' command, followed by the number of the desired shape. Note that different shapes will/will not allow color and fill, and also that ggplot and ggplotly display some shapes slightly differently.
+
+```{r} 
+point_styles <- tibble(point.style = seq(0, 25),
+                       x = c(rep(seq(0, 9), 2), seq(0, 5)),
+                       y = c(rep(0, 10), rep(1, 10), rep(2, 6)),
+                       label = c(rep("0-9", 10), rep("10-19", 10), rep("20-25", 6))
+)
+
+point_styles <-
+  point_styles %>% 
+  mutate(label = fct_relevel(label, "0-9" , "10-19" , "20-25"))
+```
+
+
+```{r, warning = FALSE}
+p <- ggplot(data = point_styles) +
+  scale_x_continuous(limits = c(0 , 9), breaks = seq(from = 0, to = 9, by = 1)) +
+  geom_point(aes(x = x, y = label), size = 5, shape = point_styles$point.style, color = "Black", fill = "#7ccbbc") +
+  theme_rethink()
+
+ggplotly(p)
+
+p
+```
