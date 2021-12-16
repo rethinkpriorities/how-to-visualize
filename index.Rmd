@@ -50,6 +50,9 @@ Please add yourself to the list below to acknowledge your contributions.
 
 - Willem Sleegers: [willem@rethinkpriorities.org](mailto:willem@rethinkpriorities.org)
 
+- Jamie Elsey:
+[jamie@rethinkpriorities.org](mailto:jamie@rethinkpriorities.org)
+
 ```{r include=FALSE}
 # Automatically create a bib database for R packages
 knitr::write_bib(
