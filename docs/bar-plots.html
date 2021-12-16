@@ -20,64 +20,64 @@
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet">
 <script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
 <script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><header><script>
-      
-      function toggleAllCode() {
-        const button = this
-      
-        // Find all pre tags and copy buttons
-        var preTags = document.querySelectorAll("pre")
-        var copyButtons = document.getElementsByClassName("btn-copy")
+        function toggleAllCode() {
+          const button = this
         
-        // Loop over the pre elements and toggle the hidden class
-        for (let pre of preTags) {
-          if (pre.classList.contains("sourceCode")) {
-            pre.classList.toggle("hidden")
+          // Find all pre tags and copy buttons
+          var preTags = document.querySelectorAll("pre")
+          var copyButtons = document.getElementsByClassName("btn-copy")
+          
+          // Loop over the pre elements and toggle the hidden class
+          for (let pre of preTags) {
+            if (pre.classList.contains("sourceCode")) {
+              pre.classList.toggle("hidden")
+            }
+          }
+          
+          // Loop over the buttons and set the hidden class
+          for (let copyButton of copyButtons) {
+            copyButton.classList.toggle("hidden")
+          }
+        
+          // Toggle the button's class
+          button.classList.toggle("code-hidden")
+        
+          // Update the button text
+          if (button.classList.contains("code-hidden")) {
+            button.textContent = "Show All Code"
+          } else {
+            button.textContent = "Hide All Code"
           }
         }
         
-        // Loop over the buttons and set the hidden class
-        for (let copyButton of copyButtons) {
-          copyButton.classList.toggle("hidden")
+        window.onload = function() {
+          // Check if there are any code sections on the page
+          var codeBlocks = document.getElementsByClassName("sourceCode")
+          
+          // Add toggle code button, but only if there are code blocks
+          if (codeBlocks.length > 0) {
+            // Find the book-extra class element on the right side of the page
+            var extra = document.getElementsByClassName("book-extra").item(1)
+            console.log(extra)
+            
+            // Create a settings label
+            var label = document.createElement("p")
+            label.textContent = "Settings"
+            label.className = "settings-label"
+            
+            // Add the label to the book-extra element
+            extra.appendChild(label)
+          
+            // Create a button
+            var button = document.createElement("button")
+            button.textContent = "Hide All Code"
+            button.className = "btn toggle-code-button active-code"
+            button.onclick = toggleAllCode
+            
+            // Add the button to the book-extra element
+            extra.appendChild(button)
+          }
         }
-      
-        // Toggle the button's class
-        button.classList.toggle("code-hidden")
-      
-        // Update the button text
-        if (button.classList.contains("code-hidden")) {
-          button.textContent = "Show All Code"
-        } else {
-          button.textContent = "Hide All Code"
-        }
-      }
-      
-      window.onload = function() {
-        // Test
-        console.log("test")
-      
-        // Find the book-extra class element on the right side of the page
-        var extra = document.getElementsByClassName("book-extra").item(1)
-        console.log(extra)
-        
-        // Create a settings label
-        var label = document.createElement("p")
-        label.textContent = "Settings"
-        label.className = "settings-label"
-        
-        // Add the label to the book-extra element
-        extra.appendChild(label)
-      
-        // Create a button
-        var button = document.createElement("button")
-        button.textContent = "Hide All Code"
-        button.className = "btn toggle-code-button active-code"
-        button.onclick = toggleAllCode
-        
-        // Add the button to the book-extra element
-        extra.appendChild(button)
-      }
-      
-        
       </script></header><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="style.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
@@ -128,8 +128,8 @@
   <span class="fu">theme_rethink</span><span class="op">(</span><span class="op">)</span>
 
 <span class="fu">ggplotly</span><span class="op">(</span><span class="va">p</span>, tooltip <span class="op">=</span> <span class="st">"x"</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-4fb82ab28e3b7abc97e5" style="width:672px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4fb82ab28e3b7abc97e5">{"x":{"data":[{"orientation":"v","width":0.9,"base":0,"x":[1],"y":[5],"text":"class: 2seater","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(11,4,5,0.75)","line":{"width":1.88976377952756,"color":"rgba(11,4,5,1)"}},"name":"2seater","legendgroup":"2seater","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":0,"x":[2],"y":[47],"text":"class: compact","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(49,33,66,0.75)","line":{"width":1.88976377952756,"color":"rgba(49,33,66,1)"}},"name":"compact","legendgroup":"compact","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":0,"x":[3],"y":[41],"text":"class: midsize","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(65,68,136,0.75)","line":{"width":1.88976377952756,"color":"rgba(65,68,136,1)"}},"name":"midsize","legendgroup":"midsize","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":0,"x":[4],"y":[11],"text":"class: minivan","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(53,115,161,0.75)","line":{"width":1.88976377952756,"color":"rgba(53,115,161,1)"}},"name":"minivan","legendgroup":"minivan","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":0,"x":[5],"y":[33],"text":"class: pickup","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(53,161,171,0.75)","line":{"width":1.88976377952756,"color":"rgba(53,161,171,1)"}},"name":"pickup","legendgroup":"pickup","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":0,"x":[6],"y":[35],"text":"class: subcompact","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(91,205,173,0.75)","line":{"width":1.88976377952756,"color":"rgba(91,205,173,1)"}},"name":"subcompact","legendgroup":"subcompact","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":0,"x":[7],"y":[62],"text":"class: suv","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(196,234,208,0.75)","line":{"width":1.88976377952756,"color":"rgba(196,234,208,1)"}},"name":"suv","legendgroup":"suv","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":26.2283105022831,"r":7.30593607305936,"b":40.1826484018265,"l":37.2602739726027},"plot_bgcolor":"rgba(242,242,242,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.4,7.6],"tickmode":"array","ticktext":["2seater","compact","midsize","minivan","pickup","subcompact","suv"],"tickvals":[1,2,3,4,5,6,7],"categoryorder":"array","categoryarray":["2seater","compact","midsize","minivan","pickup","subcompact","suv"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"class","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-3.1,65.1],"tickmode":"array","ticktext":["0","20","40","60"],"tickvals":[0,20,40,60],"categoryorder":"array","categoryarray":["0","20","40","60"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"count","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895},"title":{"text":"class","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"2bcb6b912a62":{"x":{},"colour":{},"fill":{},"type":"bar"}},"cur_data":"2bcb6b912a62","visdat":{"2bcb6b912a62":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-f920d990051cce976974" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f920d990051cce976974">{"x":{"data":[{"orientation":"v","width":0.9,"base":0,"x":[1],"y":[5],"text":"class: 2seater","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(11,4,5,0.75)","line":{"width":1.88976377952756,"color":"rgba(11,4,5,1)"}},"name":"2seater","legendgroup":"2seater","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":0,"x":[2],"y":[47],"text":"class: compact","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(49,33,66,0.75)","line":{"width":1.88976377952756,"color":"rgba(49,33,66,1)"}},"name":"compact","legendgroup":"compact","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":0,"x":[3],"y":[41],"text":"class: midsize","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(65,68,136,0.75)","line":{"width":1.88976377952756,"color":"rgba(65,68,136,1)"}},"name":"midsize","legendgroup":"midsize","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":0,"x":[4],"y":[11],"text":"class: minivan","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(53,115,161,0.75)","line":{"width":1.88976377952756,"color":"rgba(53,115,161,1)"}},"name":"minivan","legendgroup":"minivan","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":0,"x":[5],"y":[33],"text":"class: pickup","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(53,161,171,0.75)","line":{"width":1.88976377952756,"color":"rgba(53,161,171,1)"}},"name":"pickup","legendgroup":"pickup","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":0,"x":[6],"y":[35],"text":"class: subcompact","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(91,205,173,0.75)","line":{"width":1.88976377952756,"color":"rgba(91,205,173,1)"}},"name":"subcompact","legendgroup":"subcompact","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":0,"x":[7],"y":[62],"text":"class: suv","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(196,234,208,0.75)","line":{"width":1.88976377952756,"color":"rgba(196,234,208,1)"}},"name":"suv","legendgroup":"suv","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":26.2283105022831,"r":7.30593607305936,"b":40.1826484018265,"l":37.2602739726027},"plot_bgcolor":"rgba(242,242,242,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.4,7.6],"tickmode":"array","ticktext":["2seater","compact","midsize","minivan","pickup","subcompact","suv"],"tickvals":[1,2,3,4,5,6,7],"categoryorder":"array","categoryarray":["2seater","compact","midsize","minivan","pickup","subcompact","suv"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"class","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-3.1,65.1],"tickmode":"array","ticktext":["0","20","40","60"],"tickvals":[0,20,40,60],"categoryorder":"array","categoryarray":["0","20","40","60"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"count","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895},"title":{"text":"class","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"2d177ba09663":{"x":{},"colour":{},"fill":{},"type":"bar"}},"cur_data":"2d177ba09663","visdat":{"2d177ba09663":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
   <div class="chapter-nav">
