@@ -1,3 +1,9 @@
+---
+output:
+  html_document:
+    code_folding: hide
+---
+
 # Bar plots
 
 ## Simple bar plot
