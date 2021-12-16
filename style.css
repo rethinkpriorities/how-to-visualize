@@ -31,8 +31,15 @@ pre {
   display: none;
 }
 
-/* Figures styling */
+/* Plotly styling */
 
 .plotly {
   max-width: 100%;
 }
+
+/* Adjust the modebar position a bit so it does not overlap with the plot */
+.js-plotly-plot .plotly .modebar {
+  top: -9px;
+}
+
+

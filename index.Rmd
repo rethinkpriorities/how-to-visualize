@@ -20,7 +20,9 @@ library(viridis)
 library(plotly)
 
 theme_rethink <- function() {
-  theme(panel.background = element_rect(fill = "gray95"))
+  theme(
+    panel.background = element_rect(fill = "gray95")
+  )
 }
 ```
 
