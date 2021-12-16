@@ -1,0 +1,18 @@
+# Bookdown and EA Forum; organisation, collophon, formatting
+
+We often need to make output into a format acceptable for the EA Forum.
+
+Our current thinking for the EA Survey reports is:
+
+- Bookdown: detailed graphs and analysis, some technical details, but minimal discussion. Link to our 'methodology' bookdown where relevant, rather than re-explaining a concept
+
+- EA Forum: Summaries and excerpts of the analysis and figures, more discussion, interpretation, and implications.
+
+## To the extent that we still *will* be moving content from Rmd/bookdown to the EA forum... {-}
+
+Typically, RP has made EA Forum these posts first in Google Docs for feedback and then there is some sort of procedure to get it into EA forum markdown syntax from there. For some previous posts, we pasted from the Rstudio visual mode pastes into Google docs for narrative, and figures/tables could be manually pasted. But we want to avoid having to do that!
+
+David Reinstein has worked with Pete and others on tools to (mostly) automate this conversion and hosting process, but some manual tweaks were needed at the end. See the work on this [here, at bottom](https://github.com/rethinkpriorities/ea-data/blob/master/main_2020.R), and in [this R script](https://github.com/rethinkpriorities/ea-data/blob/master/code/parse_ea_forum_md.R) and [this Python script](https://github.com/rethinkpriorities/ea-data/blob/master/code/fix_eafo_links.py).  Yes, it's spaghetti code.
+
+Atm, some formatting adjustments are necessary, but both EA forum and our bookdown style templates are changing.
+
