@@ -1,6 +1,62 @@
 <header>
   <script>
-    // Find all pre tags
-    const preTags = document.querySelectorAll("pre")
+  
+  function toggleAllCode() {
+    const button = this
+  
+    // Find all pre tags and copy buttons
+    var preTags = document.querySelectorAll("pre")
+    var copyButtons = document.getElementsByClassName("btn-copy")
+    
+    // Loop over the pre elements and toggle the hidden class
+    for (let pre of preTags) {
+      if (pre.classList.contains("sourceCode")) {
+        pre.classList.toggle("hidden")
+      }
+    }
+    
+    // Loop over the buttons and set the hidden class
+    for (let copyButton of copyButtons) {
+      copyButton.classList.toggle("hidden")
+    }
+  
+    // Toggle the button's class
+    button.classList.toggle("code-hidden")
+  
+    // Update the button text
+    if (button.classList.contains("code-hidden")) {
+      button.textContent = "Show All Code"
+    } else {
+      button.textContent = "Hide All Code"
+    }
+  }
+  
+  window.onload = function() {
+    // Test
+    console.log("test")
+  
+    // Find the book-extra class element on the right side of the page
+    var extra = document.getElementsByClassName("book-extra").item(1)
+    console.log(extra)
+    
+    // Create a settings label
+    var label = document.createElement("p")
+    label.textContent = "Settings"
+    label.className = "settings-label"
+    
+    // Add the label to the book-extra element
+    extra.appendChild(label)
+  
+    // Create a button
+    var button = document.createElement("button")
+    button.textContent = "Hide All Code"
+    button.className = "btn toggle-code-button active-code"
+    button.onclick = toggleAllCode
+    
+    // Add the button to the book-extra element
+    extra.appendChild(button)
+  }
+  
+    
   </script>
 </header>

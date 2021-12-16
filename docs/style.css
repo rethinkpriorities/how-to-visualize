@@ -1,0 +1,38 @@
+
+/* Chapter settings styling */
+
+.settings-label {
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+/* Toggle code visibility styling */ 
+.toggle-code-button {
+  font-size: 0.9rem;
+  padding-left: 0;
+  color: #42708E;
+}
+
+.toggle-code-button:hover {
+  color: #42708E;
+  text-decoration: underline;
+}
+
+.toggle-code-button:focus {
+  
+  box-shadow: none;
+}
+
+pre {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Figures styling */
+
+.plotly {
+  max-width: 100%;
+}

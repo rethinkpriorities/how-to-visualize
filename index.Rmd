@@ -26,7 +26,7 @@ theme_rethink <- function() {
 
 # How to Visualize {-}
 
-## Important
+## Important {-}
 
 This is a work in progress! At this point I would not even call it an alpha, so please be patient while we finalize this book!
 
