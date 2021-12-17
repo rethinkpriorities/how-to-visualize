@@ -24,13 +24,13 @@ rename <- dplyr::rename
 #NOTE: I USUALLY USE THE SUFF BELOW FOR SETUP, BUT I COMMENTED IT OUT HERE FOR NOW 
 #... Import setup for this project using template from dr-rstuff  ####
 
-# dir.create(here("code"))
-# 
-# try_download(
-#   "https://raw.githubusercontent.com/daaronr/dr-rstuff/master/functions/project_setup.R",
-#   here::here("code", "project_setup.R")
-# )
-# 
+dir.create(here("code"))
+
+try_download(
+  "https://raw.githubusercontent.com/daaronr/dr-rstuff/master/functions/project_setup.R",
+  here::here("code", "project_setup.R")
+)
+
 # try_download(
 #   "https://raw.githubusercontent.com/daaronr/dr-rstuff/master/functions/download_formatting.R",
 #   here::here("code", "download_formatting.R")
@@ -38,12 +38,15 @@ rename <- dplyr::rename
 
 # RENV: We can just have renv search for and install these (in Rstudio it reminds you; otherwise use call `renv::dependencies()` or `renv::hydrate` I think. )
 
-#source(here::here("code", "project_setup.R"))
+source(here::here("code", "project_setup.R"))
+
+source(here("code", "plotting_functions.R"))
 
 #source(here::here("code", "download_formatting.R"))
 
-#print("project_setup creates 'support' folder and downloads tufte_plus.css, header.html into it")
 #print("project_setup creates 'code' folder and downloads baseoptions.R, and functions.R into it, and sources these")
+# Most stuff in 'functions.R' is probably unnecessary ... it could use a good cleaning
+
 
 ### Source model-building tools/functions
 #source(here::here("code","modeling_functions.R"))
@@ -52,6 +55,37 @@ rename <- dplyr::rename
 #Just 'pull these in' from the ea-data repo for now; we may re-home them here later
 
 p_load("bettertrace") #better tracking after bugs
+
+
+# NOT WORKING YET ...  Read in EAS (or other) data for examples ####
+
+print("NOTE: You need to follow steps at https://stackoverflow.com/questions/62336550/source-data-r-from-private-repository for this import to work, and you need access")
+
+library(httr)
+req <- content(GET(
+  "https://github.com/rethinkpriorities/ea-data/raw/master/data/edited_data/eas_all.Rdata",
+  add_headers(Authorization =  Sys.getenv("R_GITHUB"))
+), as = "parsed")
+tmp <- tempfile()
+r1 <- GET(req$download_url, write_disk(tmp))
+load(tmp)
+
+
+# Workaround EAS input - requires manual access/moving data ####
+
+pp("NOTE: If you have access to this data, move it in, and remember to preserve the 'gitignore'")
+
+# ... Cheesy code to move things over manually ####
+dir.create(here("data_to_gitignore"))
+
+file.copy(from = "../ea-data/data/edited_data/eas_20.Rdata", to = "data_to_gitignore/eas_20.Rdata")
+
+file.copy(from = "../ea-data/data/edited_data/eas_20.Rdata", to = "data_to_gitignore/eas_all.Rdata")
+
+eas_all <- readRDS(here("data_to_gitignore", "eas_all.Rdata"))
+
+eas_20 <- readRDS(here("data_to_gitignore",  "eas_20.Rdata"))
+
 
 #### BUILD the bs4_book bookdown ####
 #The line below should 'build the bookdown' in the order specified in `_bookdown.yml`
@@ -62,6 +96,7 @@ library(downlit)
 
 library(bs4_book)
 library(bookdown)
+
 
 {
   options(knitr.duplicate.label = "allow")
