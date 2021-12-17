@@ -1,8 +1,9 @@
 book_filename: "how_to_visualize"
-delete_merged_file: TRUE
-  #DR: it 'merges the Rmd files first. Normally I keep it as it can be helpful, but I'm having it delete for now to avoid confusion for people new to this
+delete_merged_file: TRUE # Set to FALSE for debugging
 output_dir: "docs"
 rmd_subdir: true
-#rmd_files:
- # html: ["index.Rmd", "chapters/coding-labelling-etc.Rmd", "chapters/bar-plots.Rmd", "chapters/line-plots.Rmd", "chapters/scatter-plots.Rmd", "chapters/geompoint_styles.Rmd", "chapters/bookdown-eaforum.Rmd", "chapters/references.Rmd"]
-clean: ["support"]
+rmd_files: ["index.Rmd", "chapters/best-practices.Rmd", 
+  "chapters/using-ggplot.Rmd", "chapters/bar-plots.Rmd", 
+  "chapters/line-plots.Rmd", "chapters/scatter-plots.Rmd", 
+  "chapters/likert-plots.Rmd", "chapters/forest-plots.Rmd", 
+  "chapters/treemaps.Rmd", "chapters/references.Rmd"]
