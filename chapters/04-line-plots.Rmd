@@ -3,7 +3,7 @@
 ## Simple line plot
 
 ```{r}
-p <- ggplot(economics, aes(x = date, y = unemploy)) + 
+ggplot(economics, aes(x = date, y = unemploy)) + 
   geom_line() +
   theme_rethink()
 

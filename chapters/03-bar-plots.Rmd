@@ -10,6 +10,12 @@ output:
 
 This is a simple bar plot^[Or maybe it's not that simple after all.].
 
+This is a new paragraph. <div class="tufte">Hello, world!</div>
+
+::: {.marginnote}
+Hello, world!
+:::
+
 ```{r}
 p <- ggplot(mpg, aes(x = class, color = class, fill = class)) +
   geom_bar(alpha = .75) +

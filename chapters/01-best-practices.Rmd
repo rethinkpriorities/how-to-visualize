@@ -1,0 +1,16 @@
+# Best practices
+
+## `ggplot`
+
+Aim to use the `ggplot` R package for creating plots. `ggplot` is a powerful visualization package and should enable us to create the kind of plots we want to present. If we all use `ggplot`, we can write code that can be re-used by each other. It also makes it easy to write custom themes and color palettes that can be re-used, which will produce a consistency within and between projects that people are likely to appreciate.
+
+## Labeling
+
+Use readable but concise labels. Examples of good labels are:
+
+- "Amount donated"
+- "GWWC" (we can assume people know what GWWC is)
+
+Examples of bad labels are:
+
+- amt_don

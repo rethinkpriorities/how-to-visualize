@@ -1,3 +1,9 @@
+best-practices
+ggplot
+labeling
+using-ggplot
+using-geom_point
+availability-of-different-point-styles
 bar-plots
 simple-bar-plot
 line-plots
@@ -6,5 +12,3 @@ multiple-lines-plot
 scatter-plots
 simple-scatter-plot
 multiple-scatter-plot
-using-geom_point
-availability-of-different-point-styles
