@@ -2,8 +2,8 @@ book_filename: "how_to_visualize"
 delete_merged_file: TRUE # Set to FALSE for debugging
 output_dir: "docs"
 rmd_subdir: true
-rmd_files: ["index.Rmd", "chapters/best-practices.Rmd", 
-  "chapters/using-ggplot.Rmd", "chapters/bar-plots.Rmd", 
-  "chapters/line-plots.Rmd", "chapters/scatter-plots.Rmd", 
-  "chapters/likert-plots.Rmd", "chapters/forest-plots.Rmd", 
+rmd_files: ["index.Rmd", "chapters/best-practices.Rmd",
+  "chapters/using-ggplot.Rmd", "chapters/bar-plots.Rmd",
+  "chapters/line-plots.Rmd", "chapters/scatter-plots.Rmd",
+  "chapters/likert-plots.Rmd", "chapters/forest-plots.Rmd",
   "chapters/treemaps.Rmd", "chapters/references.Rmd"]

@@ -16,10 +16,10 @@
 <meta name="twitter:description" content="# Load packages library(treemapify)  8.1 A simple treemap p &lt;- ggplot(G20, aes(area = gdp_mil_usd, fill = hdi)) +  geom_treemap() p   8.2 A simple treemap with text p &lt;- ggplot(G20, aes(area =...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
-<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
-<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><header><script>
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1.9000/transition.js"></script><script src="libs/bs3compat-0.3.1.9000/tabs.js"></script><script src="libs/bs3compat-0.3.1.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/plotly-binding-4.9.4.1/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet">
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script><header><script>
         function toggleAllCode() {
           const button = this
         
@@ -107,7 +107,7 @@
 <li><a class="" href="line-plots.html"><span class="header-section-number">4</span> Line plots</a></li>
 <li><a class="" href="scatter-plots.html"><span class="header-section-number">5</span> Scatter plots</a></li>
 <li><a class="" href="likert-plots.html"><span class="header-section-number">6</span> Likert plots</a></li>
-<li><a class="" href="forest-plots.html"><span class="header-section-number">7</span> Forest plots</a></li>
+<li><a class="" href="forest-plots-for-cisranges-by-group.html"><span class="header-section-number">7</span> Forest plots: for CI’s/ranges5 by group6</a></li>
 <li><a class="active" href="treemaps.html"><span class="header-section-number">8</span> Treemaps</a></li>
 <li><a class="" href="references.html">References</a></li>
 <li><a class="" href="ea-forum.html"><span class="header-section-number">9</span> EA Forum</a></li>
@@ -134,7 +134,7 @@
   <span class="fu"><a href="https://wilkox.org/treemapify/reference/geom_treemap.html">geom_treemap</a></span><span class="op">(</span><span class="op">)</span>
 
 <span class="va">p</span></code></pre></div>
-<div class="inline-figure"><img src="how_to_visualize_files/figure-html/unnamed-chunk-12-1.png" width="672"></div>
+<div class="inline-figure"><img src="how_to_visualize_files/figure-html/unnamed-chunk-25-1.png" width="672"></div>
 </div>
 <div id="a-simple-treemap-with-text" class="section level2" number="8.2">
 <h2>
@@ -151,12 +151,12 @@
   <span class="op">)</span>
 
 <span class="va">p</span></code></pre></div>
-<div class="inline-figure"><img src="how_to_visualize_files/figure-html/unnamed-chunk-13-1.png" width="672"></div>
+<div class="inline-figure"><img src="how_to_visualize_files/figure-html/unnamed-chunk-26-1.png" width="672"></div>
 
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="forest-plots.html"><span class="header-section-number">7</span> Forest plots</a></div>
+<div class="prev"><a href="forest-plots-for-cisranges-by-group.html"><span class="header-section-number">7</span> Forest plots: for CI’s/ranges5 by group6</a></div>
 <div class="next"><a href="references.html">References</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>

@@ -16,7 +16,7 @@ simple-scatter-plot
 jittered-scatter-plot
 multiple-scatter-plot
 likert-plots
-forest-plots
+forest-plots-for-cisranges-by-group
 treemaps
 a-simple-treemap
 a-simple-treemap-with-text

@@ -83,15 +83,14 @@ file.copy(from = "../ea-data/data/edited_data/eas_20.Rdata", to = "data_to_gitig
 file.copy(from = "../ea-data/data/edited_data/eas_20.Rdata", to = "data_to_gitignore/eas_all.Rdata")
 
 eas_all <- readRDS(here("data_to_gitignore", "eas_all.Rdata"))
-
 eas_20 <- readRDS(here("data_to_gitignore",  "eas_20.Rdata"))
 
 
 #### BUILD the bs4_book bookdown ####
 #The line below should 'build the bookdown' in the order specified in `_bookdown.yml`
-remotes::install_github("rstudio/bslib")
-install.packages("downlit")
-remotes::install_github("rstudio/bookdown")
+#remotes::install_github("rstudio/bslib")
+#install.packages("downlit")
+#remotes::install_github("rstudio/bookdown")
 library(downlit)
 
 library(bs4_book)

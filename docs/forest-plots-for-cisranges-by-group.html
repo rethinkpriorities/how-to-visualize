@@ -4,22 +4,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>6 Likert plots | How to Visualize</title>
+<title>7 Forest plots: for CI’s/ranges5 by group6 | How to Visualize</title>
 <meta name="author" content="Rethink Priorities">
-<meta name="description" content="# Load packages library(likert) ## Loading required package: xtable ## ## Attaching package: 'likert' ## The following object is masked from 'package:dplyr': ## ##   recode # Load data...">
+<meta name="description" content="#grouped_forest_plot is defined in plotting_functions.R group_fp_do &lt;- function(df, groups=model_name, xlims=c(NA,NA), vl=1){  df %&gt;%   grouped_forest_plot(., groups = {{groups}}, vline = {{vl}})...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
-<meta property="og:title" content="6 Likert plots | How to Visualize">
+<meta property="og:title" content="7 Forest plots: for CI’s/ranges5 by group6 | How to Visualize">
 <meta property="og:type" content="book">
-<meta property="og:description" content="# Load packages library(likert) ## Loading required package: xtable ## ## Attaching package: 'likert' ## The following object is masked from 'package:dplyr': ## ##   recode # Load data...">
+<meta property="og:description" content="#grouped_forest_plot is defined in plotting_functions.R group_fp_do &lt;- function(df, groups=model_name, xlims=c(NA,NA), vl=1){  df %&gt;%   grouped_forest_plot(., groups = {{groups}}, vline = {{vl}})...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="6 Likert plots | How to Visualize">
-<meta name="twitter:description" content="# Load packages library(likert) ## Loading required package: xtable ## ## Attaching package: 'likert' ## The following object is masked from 'package:dplyr': ## ##   recode # Load data...">
+<meta name="twitter:title" content="7 Forest plots: for CI’s/ranges5 by group6 | How to Visualize">
+<meta name="twitter:description" content="#grouped_forest_plot is defined in plotting_functions.R group_fp_do &lt;- function(df, groups=model_name, xlims=c(NA,NA), vl=1){  df %&gt;%   grouped_forest_plot(., groups = {{groups}}, vline = {{vl}})...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet">
-<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
-<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><header><script>
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1.9000/transition.js"></script><script src="libs/bs3compat-0.3.1.9000/tabs.js"></script><script src="libs/bs3compat-0.3.1.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/plotly-binding-4.9.4.1/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet">
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script><header><script>
         function toggleAllCode() {
           const button = this
         
@@ -106,11 +106,11 @@
 <li><a class="" href="bar-plots.html"><span class="header-section-number">3</span> Bar plots</a></li>
 <li><a class="" href="line-plots.html"><span class="header-section-number">4</span> Line plots</a></li>
 <li><a class="" href="scatter-plots.html"><span class="header-section-number">5</span> Scatter plots</a></li>
-<li><a class="active" href="likert-plots.html"><span class="header-section-number">6</span> Likert plots</a></li>
-<li><a class="" href="treemaps.html"><span class="header-section-number">7</span> Treemaps</a></li>
-<li><a class="" href="forest-plots.html"><span class="header-section-number">8</span> Forest plots</a></li>
-<li><a class="" href="ea-forum.html"><span class="header-section-number">9</span> EA Forum</a></li>
+<li><a class="" href="likert-plots.html"><span class="header-section-number">6</span> Likert plots</a></li>
+<li><a class="active" href="forest-plots-for-cisranges-by-group.html"><span class="header-section-number">7</span> Forest plots: for CI’s/ranges5 by group6</a></li>
+<li><a class="" href="treemaps.html"><span class="header-section-number">8</span> Treemaps</a></li>
 <li><a class="" href="references.html">References</a></li>
+<li><a class="" href="ea-forum.html"><span class="header-section-number">9</span> EA Forum</a></li>
 </ul>
 
         <div class="book-extra">
@@ -118,44 +118,31 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="likert-plots" class="section level1" number="6">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="forest-plots-for-cisranges-by-group" class="section level1" number="7">
 <h1>
-<span class="header-section-number">6</span> Likert plots<a class="anchor" aria-label="anchor" href="#likert-plots"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7</span> Forest plots: for CI’s/ranges<a href="ea-forum.html#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a> by group<a href="ea-forum.html#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a><a class="anchor" aria-label="anchor" href="#forest-plots-for-cisranges-by-group"><i class="fas fa-link"></i></a>
 </h1>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Load packages</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://jason.bryer.org/likert">likert</a></span><span class="op">)</span></code></pre></div>
-<pre><code>## Loading required package: xtable</code></pre>
-<pre><code>## 
-## Attaching package: 'likert'</code></pre>
-<pre><code>## The following object is masked from 'package:dplyr':
-## 
-##     recode</code></pre>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Load data</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">pisaitems</span><span class="op">)</span>
+<code class="sourceCode R"><span class="co">#grouped_forest_plot is defined in plotting_functions.R</span>
 
-<span class="co"># Prepare data</span>
-<span class="va">items</span> <span class="op">&lt;-</span> <span class="va">pisaitems</span> <span class="op">%&gt;%</span>
-  <span class="fu">as_tibble</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">select</span><span class="op">(</span><span class="fu">starts_with</span><span class="op">(</span><span class="st">"ST25"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">rename</span><span class="op">(</span>
-    Magazines <span class="op">=</span> <span class="va">ST25Q01</span>,
-    `Comic books` <span class="op">=</span> <span class="va">ST25Q02</span>,
-    Fiction <span class="op">=</span> <span class="va">ST25Q03</span>,
-    `Non-fiction books` <span class="op">=</span> <span class="va">ST25Q04</span>,
-    Newspaper <span class="op">=</span> <span class="va">ST25Q05</span>
-  <span class="op">)</span></code></pre></div>
-<p>The combination of stacked bar charts and overlayed error/CI bars for some ‘middle split’ seems informative:</p>
-<p>See <a href="%22https://rethinkpriorities.github.io/ea_data_public/eas-engagement.html#summary-charts%22">here</a> for an example of a summary chart.</p>
+<span class="va">group_fp_do</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">df</span>, <span class="va">groups</span><span class="op">=</span><span class="va">model_name</span>, <span class="va">xlims</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">NA</span>,<span class="cn">NA</span><span class="op">)</span>, <span class="va">vl</span><span class="op">=</span><span class="fl">1</span><span class="op">)</span><span class="op">{</span>
+  <span class="va">df</span> <span class="op">%&gt;%</span>
+    <span class="fu">grouped_forest_plot</span><span class="op">(</span><span class="va">.</span>, groups <span class="op">=</span> <span class="op">{</span><span class="op">{</span><span class="va">groups</span><span class="op">}</span><span class="op">}</span>, vline <span class="op">=</span> <span class="op">{</span><span class="op">{</span><span class="va">vl</span><span class="op">}</span><span class="op">}</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_cartesian.html">coord_cartesian</a></span><span class="op">(</span>xlim <span class="op">=</span> <span class="op">{</span><span class="op">{</span><span class="va">xlims</span><span class="op">}</span><span class="op">}</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_colour_discrete.html">scale_colour_discrete</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">""</span>,
+                        labels <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">str_wrap</span><span class="op">(</span><span class="va">x</span>, width <span class="op">=</span> <span class="fl">15</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides</a></span><span class="op">(</span>fill<span class="op">=</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html">guide_legend</a></span><span class="op">(</span>nrow<span class="op">=</span><span class="fl">2</span>, byrow<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
+<span class="op">}</span></code></pre></div>
 
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="scatter-plots.html"><span class="header-section-number">5</span> Scatter plots</a></div>
-<div class="next"><a href="treemaps.html"><span class="header-section-number">7</span> Treemaps</a></div>
+<div class="prev"><a href="likert-plots.html"><span class="header-section-number">6</span> Likert plots</a></div>
+<div class="next"><a href="treemaps.html"><span class="header-section-number">8</span> Treemaps</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav"><li><a class="nav-link" href="#likert-plots"><span class="header-section-number">6</span> Likert plots</a></li></ul>
+      <ul class="nav navbar-nav"><li><a class="nav-link" href="#forest-plots-for-cisranges-by-group"><span class="header-section-number">7</span> Forest plots: for CI’s/ranges5 by group6</a></li></ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">

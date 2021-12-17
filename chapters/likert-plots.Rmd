@@ -24,3 +24,63 @@ The combination of stacked bar charts and overlayed error/CI bars for some 'midd
 
 See [here]("https://rethinkpriorities.github.io/ea_data_public/eas-engagement.html#summary-charts") for an example of a summary chart.
 
+
+*Coding note...*^[I 'list a bunch of options' below; I reused these across plots for EAS 2020, to make the code more concise and modular. Maybe worth functionalizing this? It would be better for this *not* to specify particular column names(`engagement`, `engage_high_n`), but have that separated out]  
+
+```{r}
+
+engage_stack_layers <- list(
+  geom_bar(aes(fill=engagement), position="fill"),
+    theme(axis.title.x = element_blank(),
+          axis.text.x = element_blank(),
+          axis.ticks.x = element_blank(),
+          axis.ticks.y = element_blank(),
+          axis.title.y = element_blank()
+    ),
+  stat_summary(aes(y = engage_high_n),
+           fun.data = mean_cl_normal,  na.rm = TRUE,
+           geom = "errorbar", colour = "pink", width = 0.2),
+stat_summary(aes(y = engage_high_n),
+           fun.data = mean_cl_normal,  na.rm = TRUE,
+           geom = "errorbar",  colour = "purple", width = 0.2,
+           fun.args = list(mult = 1)),
+     coord_flip()
+      )
+
+```
+
+
+\
+
+To give a 'CI (or other) range' on an ordered categorical outcome, you need to focus on some break point. We chose 'engagement at-or-below/above 3'.  We did some re-coding just before the visualization.^[Putting this here rather than in the build file is 'marginally OK practice' as it's coding just for a specific analysis.] 
+
+```{r}
+mutate_eng <- function(df) {
+{df} %>%
+  filter(!is.na(engagement)) %>%
+        mutate(engagement= fct_recode(engagement,
+                              "(1) None" = "(1) No engagement",
+                             "(2) Mild" = "(2) Mild engagement" ,
+                             "(3) Moderate" = "(3) Moderate engagement",
+                             "(4) Considerable" = "(4) Considerable engagement",
+                             "(5) High" = "(5) High engagement",
+                             ))
+}
+```
+
+
+```{r}
+
+#eas_20 <- mutate(engage_high_n = as.numeric(engage_cats_2=="4-5"))
+
+(
+engage_by_age <- eas_20 %>%
+  mutate_eng %>%
+    ggplot() +
+ aes(x = fct_rev(age_approx_ranges) ) +
+  engage_stack_layers +
+    labs(title = "Engagement x 'Age'", x="Age", y="share", 
+         caption = "95% CI bars for 'share 4-5 engaged'  in pink, 1 SE in purple")
+)
+```
+

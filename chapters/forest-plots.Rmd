@@ -1,1 +1,24 @@
-# Forest plots
+# Forest plots: for CI's/ranges^[...of values or 'effects'] by group^[... or by model or specification]
+
+
+```{r}
+
+#grouped_forest_plot is defined in plotting_functions.R
+
+group_fp_do <- function(df, groups=model_name, xlims=c(NA,NA), vl=1){
+  df %>%
+    grouped_forest_plot(., groups = {{groups}}, vline = {{vl}}) +
+    coord_cartesian(xlim = {{xlims}}) +
+    scale_colour_discrete(name = "",
+                        labels = function(x) str_wrap(x, width = 15)) +
+  theme_bw() +
+  theme(legend.position = "bottom") +
+  guides(fill=guide_legend(nrow=2, byrow=TRUE))
+}
+
+```
+
+
+
+
+
