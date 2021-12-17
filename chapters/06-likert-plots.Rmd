@@ -20,7 +20,6 @@ items <- pisaitems %>%
   )
 ```
 
-# 
 The combination of stacked bar charts and overlayed error/CI bars for some 'middle split' seems informative:
 
 See [here]("https://rethinkpriorities.github.io/ea_data_public/eas-engagement.html#summary-charts") for an example of a summary chart.

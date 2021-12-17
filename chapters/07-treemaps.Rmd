@@ -1,6 +1,7 @@
 # Treemaps
 
 ```{r}
+# Load packages
 library(treemapify)
 ```
 

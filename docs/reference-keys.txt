@@ -16,7 +16,6 @@ simple-scatter-plot
 jittered-scatter-plot
 multiple-scatter-plot
 likert-plots
-section
 treemaps
 a-simple-treemap
 a-simple-treemap-with-text

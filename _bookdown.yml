@@ -1,4 +1,4 @@
-book_filename: "how_to_vis"
+book_filename: "how_to_visualize"
 delete_merged_file: TRUE
   #DR: it 'merges the Rmd files first. Normally I keep it as it can be helpful, but I'm having it delete for now to avoid confusion for people new to this
 output_dir: "docs"
