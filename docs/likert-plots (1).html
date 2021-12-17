@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>1 Best practices | How to Visualize</title>
+<title>6 Likert plots | How to Visualize</title>
 <meta name="author" content="Rethink Priorities">
-<meta name="description" content="1.1 ggplot Aim to use the ggplot R package for creating plots. ggplot is a powerful visualization package and should enable us to create the kind of plots we want to present. If we all use ggplot,...">
+<meta name="description" content="# Load packages library(likert) ## Loading required package: xtable ## ## Attaching package: 'likert' ## The following object is masked from 'package:dplyr': ## ##   recode # Load data...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
-<meta property="og:title" content="1 Best practices | How to Visualize">
+<meta property="og:title" content="6 Likert plots | How to Visualize">
 <meta property="og:type" content="book">
-<meta property="og:description" content="1.1 ggplot Aim to use the ggplot R package for creating plots. ggplot is a powerful visualization package and should enable us to create the kind of plots we want to present. If we all use ggplot,...">
+<meta property="og:description" content="# Load packages library(likert) ## Loading required package: xtable ## ## Attaching package: 'likert' ## The following object is masked from 'package:dplyr': ## ##   recode # Load data...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="1 Best practices | How to Visualize">
-<meta name="twitter:description" content="1.1 ggplot Aim to use the ggplot R package for creating plots. ggplot is a powerful visualization package and should enable us to create the kind of plots we want to present. If we all use ggplot,...">
+<meta name="twitter:title" content="6 Likert plots | How to Visualize">
+<meta name="twitter:description" content="# Load packages library(likert) ## Loading required package: xtable ## ## Attaching package: 'likert' ## The following object is masked from 'package:dplyr': ## ##   recode # Load data...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -101,12 +101,12 @@
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">How to Visualize</a></li>
-<li><a class="active" href="best-practices.html"><span class="header-section-number">1</span> Best practices</a></li>
+<li><a class="" href="best-practices.html"><span class="header-section-number">1</span> Best practices</a></li>
 <li><a class="" href="using-ggplot.html"><span class="header-section-number">2</span> Using ggplot</a></li>
 <li><a class="" href="bar-plots.html"><span class="header-section-number">3</span> Bar plots</a></li>
 <li><a class="" href="line-plots.html"><span class="header-section-number">4</span> Line plots</a></li>
 <li><a class="" href="scatter-plots.html"><span class="header-section-number">5</span> Scatter plots</a></li>
-<li><a class="" href="likert-plots.html"><span class="header-section-number">6</span> Likert plots</a></li>
+<li><a class="active" href="likert-plots.html"><span class="header-section-number">6</span> Likert plots</a></li>
 <li><a class="" href="treemaps.html"><span class="header-section-number">7</span> Treemaps</a></li>
 <li><a class="" href="forest-plots.html"><span class="header-section-number">8</span> Forest plots</a></li>
 <li><a class="" href="ea-forum.html"><span class="header-section-number">9</span> EA Forum</a></li>
@@ -118,63 +118,44 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="best-practices" class="section level1" number="1">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="likert-plots" class="section level1" number="6">
 <h1>
-<span class="header-section-number">1</span> Best practices<a class="anchor" aria-label="anchor" href="#best-practices"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6</span> Likert plots<a class="anchor" aria-label="anchor" href="#likert-plots"><i class="fas fa-link"></i></a>
 </h1>
-<div id="ggplot" class="section level2" number="1.1">
-<h2>
-<span class="header-section-number">1.1</span> <code>ggplot</code><a class="anchor" aria-label="anchor" href="#ggplot"><i class="fas fa-link"></i></a>
-</h2>
-<p>Aim to use the <code>ggplot</code> R package for creating plots. <code>ggplot</code> is a powerful visualization package and should enable us to create the kind of plots we want to present. If we all use <code>ggplot</code>, we can write code that can be re-used by each other. It also makes it easy to write custom themes and color palettes that can be re-used, which will produce a consistency within and between projects that people are likely to appreciate.</p>
-<p>Always save the plot as an object in the environment as well as printing it where it belongs.</p>
-<p>‘Piping data into the ggplot’ to make the code more portable and readable. Keep steps separate.</p>
-</div>
-<div id="re-usability" class="section level2" number="1.2">
-<h2>
-<span class="header-section-number">1.2</span> Re-usability<a class="anchor" aria-label="anchor" href="#re-usability"><i class="fas fa-link"></i></a>
-</h2>
-<p>Ideally, we will come up with a set of functions and default options for the key sets of plots we use and like. Otherwise define sets of common options for plots in one place, and repeated ggplot elements together as a list to avoid repetition and clutter and to to allow easy ‘global’ adjustment.</p>
-<p>However, there are times in which too much automation makes things less flexible and increases mental overhead. We’ll come to good compromises.</p>
-</div>
-<div id="labeling" class="section level2" number="1.3">
-<h2>
-<span class="header-section-number">1.3</span> Labeling<a class="anchor" aria-label="anchor" href="#labeling"><i class="fas fa-link"></i></a>
-</h2>
-<p>Use readable but concise labels. Examples of good labels are:</p>
-<ul>
-<li>“Amount donated”</li>
-<li>“GWWC” (we can assume people know what GWWC is)</li>
-</ul>
-<p>Examples of bad labels are:</p>
-<ul>
-<li>amt_don</li>
-</ul>
-<p>Coding-wise: Define and reuse lists of labels (or use inherent labeling options where these exist, to exploit existing variable and value labels.)</p>
-</div>
-<div id="anonymity" class="section level2" number="1.4">
-<h2>
-<span class="header-section-number">1.4</span> Anonymity<a class="anchor" aria-label="anchor" href="#anonymity"><i class="fas fa-link"></i></a>
-</h2>
-<p>We should make sure that the real data we plot is anonymous. There are several tricks we can use to assure the anonymity of the data.</p>
-<ol style="list-style-type: decimal">
-<li>Plot approximations of the data, rather than actual data itself. This can be done with geoms such as <code>geom_jitter</code> or the <code>position</code> argument.</li>
-<li>Disable hover information in interactive plots.</li>
-</ol>
-</div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Load packages</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://jason.bryer.org/likert">likert</a></span><span class="op">)</span></code></pre></div>
+<pre><code>## Loading required package: xtable</code></pre>
+<pre><code>## 
+## Attaching package: 'likert'</code></pre>
+<pre><code>## The following object is masked from 'package:dplyr':
+## 
+##     recode</code></pre>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Load data</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">pisaitems</span><span class="op">)</span>
+
+<span class="co"># Prepare data</span>
+<span class="va">items</span> <span class="op">&lt;-</span> <span class="va">pisaitems</span> <span class="op">%&gt;%</span>
+  <span class="fu">as_tibble</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">select</span><span class="op">(</span><span class="fu">starts_with</span><span class="op">(</span><span class="st">"ST25"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">rename</span><span class="op">(</span>
+    Magazines <span class="op">=</span> <span class="va">ST25Q01</span>,
+    `Comic books` <span class="op">=</span> <span class="va">ST25Q02</span>,
+    Fiction <span class="op">=</span> <span class="va">ST25Q03</span>,
+    `Non-fiction books` <span class="op">=</span> <span class="va">ST25Q04</span>,
+    Newspaper <span class="op">=</span> <span class="va">ST25Q05</span>
+  <span class="op">)</span></code></pre></div>
+<p>The combination of stacked bar charts and overlayed error/CI bars for some ‘middle split’ seems informative:</p>
+<p>See <a href="%22https://rethinkpriorities.github.io/ea_data_public/eas-engagement.html#summary-charts%22">here</a> for an example of a summary chart.</p>
+
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="index.html">How to Visualize</a></div>
-<div class="next"><a href="using-ggplot.html"><span class="header-section-number">2</span> Using ggplot</a></div>
+<div class="prev"><a href="scatter-plots.html"><span class="header-section-number">5</span> Scatter plots</a></div>
+<div class="next"><a href="treemaps.html"><span class="header-section-number">7</span> Treemaps</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#best-practices"><span class="header-section-number">1</span> Best practices</a></li>
-<li><a class="nav-link" href="#ggplot"><span class="header-section-number">1.1</span> ggplot</a></li>
-<li><a class="nav-link" href="#re-usability"><span class="header-section-number">1.2</span> Re-usability</a></li>
-<li><a class="nav-link" href="#labeling"><span class="header-section-number">1.3</span> Labeling</a></li>
-<li><a class="nav-link" href="#anonymity"><span class="header-section-number">1.4</span> Anonymity</a></li>
-</ul>
+      <ul class="nav navbar-nav"><li><a class="nav-link" href="#likert-plots"><span class="header-section-number">6</span> Likert plots</a></li></ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
