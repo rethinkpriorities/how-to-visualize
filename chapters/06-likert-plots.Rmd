@@ -1,0 +1,27 @@
+# Likert plots
+
+```{r}
+# Load packages
+library(likert)
+
+# Load data
+data(pisaitems)
+
+# Prepare data
+items <- pisaitems %>%
+  as_tibble() %>%
+  select(starts_with("ST25")) %>%
+  rename(
+    Magazines = ST25Q01,
+    `Comic books` = ST25Q02,
+    Fiction = ST25Q03,
+    `Non-fiction books` = ST25Q04,
+    Newspaper = ST25Q05
+  )
+```
+
+# 
+The combination of stacked bar charts and overlayed error/CI bars for some 'middle split' seems informative:
+
+See [here]("https://rethinkpriorities.github.io/ea_data_public/eas-engagement.html#summary-charts") for an example of a summary chart.
+

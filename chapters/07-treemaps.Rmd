@@ -1,0 +1,30 @@
+# Treemaps
+
+```{r}
+library(treemapify)
+```
+
+## A simple treemap
+
+```{r}
+p <- ggplot(G20, aes(area = gdp_mil_usd, fill = hdi)) +
+  geom_treemap()
+
+p
+```
+
+## A simple treemap with text
+
+```{r}
+p <- ggplot(G20, aes(area = gdp_mil_usd, fill = hdi, label = country)) +
+  geom_treemap() +
+  geom_treemap_text(
+    fontface = "italic", 
+    colour = "white", 
+    place = "centre",
+    grow = TRUE
+  )
+
+p
+```
+

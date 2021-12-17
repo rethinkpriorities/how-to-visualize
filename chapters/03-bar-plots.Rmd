@@ -10,16 +10,9 @@ output:
 
 This is a simple bar plot^[Or maybe it's not that simple after all.].
 
-This is a new paragraph. <div class="tufte">Hello, world!</div>
-
-::: {.marginnote}
-Hello, world!
-:::
-
 ```{r}
-p <- ggplot(mpg, aes(x = class, color = class, fill = class)) +
+p <- ggplot(mpg, aes(x = class, fill = class)) +
   geom_bar(alpha = .75) +
-  scale_color_viridis(discrete = TRUE, option = "mako", end = .95) +
   scale_fill_viridis(discrete = TRUE, option = "mako", end = .95) +
   theme_rethink()
 

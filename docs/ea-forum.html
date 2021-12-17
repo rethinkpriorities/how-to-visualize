@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>How to Visualize</title>
+<title>10 EA Forum | How to Visualize</title>
 <meta name="author" content="Rethink Priorities">
-<meta name="description" content="This is a collection of examples, color schemes, best practices, and tips to produce beautiful and informative data visualizations.">
+<meta name="description" content="We often need to make output into a format acceptable for the EA Forum. Our current thinking for the EA Survey reports is: Bookdown: detailed graphs and analysis, some technical details, but...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
-<meta property="og:title" content="How to Visualize">
+<meta property="og:title" content="10 EA Forum | How to Visualize">
 <meta property="og:type" content="book">
-<meta property="og:description" content="This is a collection of examples, color schemes, best practices, and tips to produce beautiful and informative data visualizations.">
+<meta property="og:description" content="We often need to make output into a format acceptable for the EA Forum. Our current thinking for the EA Survey reports is: Bookdown: detailed graphs and analysis, some technical details, but...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="How to Visualize">
-<meta name="twitter:description" content="This is a collection of examples, color schemes, best practices, and tips to produce beautiful and informative data visualizations.">
+<meta name="twitter:title" content="10 EA Forum | How to Visualize">
+<meta name="twitter:description" content="We often need to make output into a format acceptable for the EA Forum. Our current thinking for the EA Survey reports is: Bookdown: detailed graphs and analysis, some technical details, but...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -100,7 +100,7 @@
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
-<li><a class="active" href="index.html">How to Visualize</a></li>
+<li><a class="" href="index.html">How to Visualize</a></li>
 <li><a class="" href="best-practices.html"><span class="header-section-number">1</span> Best practices</a></li>
 <li><a class="" href="using-ggplot.html"><span class="header-section-number">2</span> Using ggplot</a></li>
 <li><a class="" href="bar-plots.html"><span class="header-section-number">3</span> Bar plots</a></li>
@@ -110,7 +110,7 @@
 <li><a class="" href="section.html"><span class="header-section-number">7</span></a></li>
 <li><a class="" href="treemaps.html"><span class="header-section-number">8</span> Treemaps</a></li>
 <li><a class="" href="forest-plots.html"><span class="header-section-number">9</span> Forest plots</a></li>
-<li><a class="" href="ea-forum.html"><span class="header-section-number">10</span> EA Forum</a></li>
+<li><a class="active" href="ea-forum.html"><span class="header-section-number">10</span> EA Forum</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
 
@@ -119,53 +119,33 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><!--bookdown:title:end--><!--bookdown:title:start--><div id="how-to-visualize" class="section level1 unnumbered">
-<h1>How to Visualize<a class="anchor" aria-label="anchor" href="#how-to-visualize"><i class="fas fa-link"></i></a>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="ea-forum" class="section level1" number="10">
+<h1>
+<span class="header-section-number">10</span> EA Forum<a class="anchor" aria-label="anchor" href="#ea-forum"><i class="fas fa-link"></i></a>
 </h1>
-<div id="important" class="section level2 unnumbered">
-<h2>Important<a class="anchor" aria-label="anchor" href="#important"><i class="fas fa-link"></i></a>
-</h2>
-<p>This is a work in progress! At this point I would not even call it an alpha, so please be patient while we finalize this book!</p>
-</div>
-<div id="about" class="section level2 unnumbered">
-<h2>About<a class="anchor" aria-label="anchor" href="#about"><i class="fas fa-link"></i></a>
-</h2>
-<p>This is a book to organize our knowledge of data visualization and to provide examples, code, templates, and functions that can be used across various Rethink Priorities projects.</p>
-<p>There are several important goals we’re hoping to achieve with this book:</p>
-<ol style="list-style-type: decimal">
-<li>Establish a knowledge base about how to best represent different types of data and relationships</li>
-<li>Provide examples of code that can be adjusted and incorporated to suit common data visualization needs<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;And ‘graph and table-making functions’ that can be simply applied without clutter.&lt;/p&gt;"><sup>1</sup></a>
-</li>
-<li>Establish different color palettes that can be consistently used within and between Rethink Priorities projects</li>
-<li>Be inclusive by designing responsive and color-blind friendly graphs</li>
-<li>Build this bookdown as an ‘example template’ for our other bookdown work</li>
-</ol>
-<p>If you have feedback, please contact any of the people below or create an issue
-on the <a href="https://github.com/rethinkpriorities/how-to-visualize/issues">GitHub repository</a>.</p>
-</div>
-<div id="contributions" class="section level2 unnumbered">
-<h2>Contributions<a class="anchor" aria-label="anchor" href="#contributions"><i class="fas fa-link"></i></a>
-</h2>
-<p>Please add yourself to the list below to acknowledge your contributions.</p>
+<p>We often need to make output into a format acceptable for the EA Forum.</p>
+<p>Our current thinking for the EA Survey reports is:</p>
 <ul>
-<li><p>Willem Sleegers: <a href="mailto:willem@rethinkpriorities.org">willem@rethinkpriorities.org</a></p></li>
-<li><p>Jamie Elsey:
-<a href="mailto:jamie@rethinkpriorities.org">jamie@rethinkpriorities.org</a></p></li>
-<li><p>David Reinstein: <a href="mailto:dreinstein@rethinkpriorities.org">dreinstein@rethinkpriorities.org</a></p></li>
+<li><p>Bookdown: detailed graphs and analysis, some technical details, but minimal discussion. Link to our ‘methodology’ bookdown where relevant, rather than re-explaining a concept</p></li>
+<li><p>EA Forum: Summaries and excerpts of the analysis and figures, more discussion, interpretation, and implications.</p></li>
 </ul>
-</div>
-</div>
+<div id="r-code-to-ea-forum-conversion" class="section level2 unnumbered">
+<h2>R code to EA Forum conversion<a class="anchor" aria-label="anchor" href="#r-code-to-ea-forum-conversion"><i class="fas fa-link"></i></a>
+</h2>
+<p>Typically, RP has made EA Forum these posts first in Google Docs for feedback and then there is some sort of procedure to get it into EA forum markdown syntax from there. For some previous posts, we pasted from the Rstudio visual mode pastes into Google docs for narrative, and figures/tables could be manually pasted. But we want to avoid having to do that!</p>
+<p>David Reinstein has worked with Pete and others on tools to (mostly) automate this conversion and hosting process, but some manual tweaks were needed at the end. See the work on this <a href="https://github.com/rethinkpriorities/ea-data/blob/master/main_2020.R">here, at bottom</a>, and in <a href="https://github.com/rethinkpriorities/ea-data/blob/master/code/parse_ea_forum_md.R">this R script</a> and <a href="https://github.com/rethinkpriorities/ea-data/blob/master/code/fix_eafo_links.py">this Python script</a>. Yes, it’s spaghetti code.</p>
+<p>Atm, some formatting adjustments are necessary, but both EA forum and our bookdown style templates are changing.</p>
 
+</div>
+</div>
   <div class="chapter-nav">
-<div class="empty"></div>
-<div class="next"><a href="best-practices.html"><span class="header-section-number">1</span> Best practices</a></div>
+<div class="prev"><a href="forest-plots.html"><span class="header-section-number">9</span> Forest plots</a></div>
+<div class="next"><a href="references.html">References</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#how-to-visualize">How to Visualize</a></li>
-<li><a class="nav-link" href="#important">Important</a></li>
-<li><a class="nav-link" href="#about">About</a></li>
-<li><a class="nav-link" href="#contributions">Contributions</a></li>
+<li><a class="nav-link" href="#ea-forum"><span class="header-section-number">10</span> EA Forum</a></li>
+<li><a class="nav-link" href="#r-code-to-ea-forum-conversion">R code to EA Forum conversion</a></li>
 </ul>
 
       <div class="book-extra">

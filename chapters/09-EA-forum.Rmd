@@ -1,4 +1,4 @@
-# Bookdown and EA Forum; organisation, collophon, formatting
+# EA Forum
 
 We often need to make output into a format acceptable for the EA Forum.
 
@@ -8,7 +8,7 @@ Our current thinking for the EA Survey reports is:
 
 - EA Forum: Summaries and excerpts of the analysis and figures, more discussion, interpretation, and implications.
 
-## To the extent that we still *will* be moving content from Rmd/bookdown to the EA forum... {-}
+## R code to EA Forum conversion {-}
 
 Typically, RP has made EA Forum these posts first in Google Docs for feedback and then there is some sort of procedure to get it into EA forum markdown syntax from there. For some previous posts, we pasted from the Rstudio visual mode pastes into Google docs for narrative, and figures/tables could be manually pasted. But we want to avoid having to do that!
 

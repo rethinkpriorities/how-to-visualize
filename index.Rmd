@@ -56,7 +56,7 @@ Please add yourself to the list below to acknowledge your contributions.
 - Jamie Elsey:
 [jamie@rethinkpriorities.org](mailto:jamie@rethinkpriorities.org)
 
-- David Reinstein [dreinstein@rethinkpriorities.org](mailto:dreinstein@rethinkpriorities.org)
+- David Reinstein: [dreinstein@rethinkpriorities.org](mailto:dreinstein@rethinkpriorities.org)
 
 
 ```{r include=FALSE}

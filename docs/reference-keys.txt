@@ -2,6 +2,7 @@ best-practices
 ggplot
 re-usability
 labeling
+anonymity
 using-ggplot
 using-geom_point
 availability-of-different-point-styles
@@ -12,6 +13,12 @@ simple-line-plot
 multiple-lines-plot
 scatter-plots
 simple-scatter-plot
+jittered-scatter-plot
 multiple-scatter-plot
-plots-for-specific-types-of-comparisons
-bookdown-and-ea-forum-organisation-collophon-formatting
+likert-plots
+section
+treemaps
+a-simple-treemap
+a-simple-treemap-with-text
+forest-plots
+ea-forum

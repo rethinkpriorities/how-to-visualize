@@ -10,6 +10,16 @@ p <- ggplot(mtcars, aes(x = wt, y = mpg)) +
 ggplotly(p)
 ```
 
+## Jittered scatter plot
+
+```{r}
+p <- ggplot(mtcars, aes(x = wt, y = mpg)) +
+  geom_jitter(alpha = .85, width = 0.5, height = 0.5) +
+  theme_rethink()
+
+ggplotly(p, tooltip = "none")
+```
+
 ## Multiple scatter plot
 
 ```{r}

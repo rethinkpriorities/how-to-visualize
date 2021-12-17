@@ -26,3 +26,10 @@ Examples of bad labels are:
 - amt_don
 
 Coding-wise: Define and reuse lists of labels (or use inherent labeling options where these exist, to exploit existing variable and value labels.)
+
+## Anonymity
+
+We should make sure that the real data we plot is anonymous. There are several tricks we can use to assure the anonymity of the data. 
+
+1. Plot approximations of the data, rather than actual data itself. This can be done with geoms such as `geom_jitter` or the `position` argument.
+2. Disable hover information in interactive plots.
