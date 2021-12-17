@@ -1,7 +1,8 @@
 best-practices
 ggplot
-re-usability
 labeling
+good-practice-coding-labelling-etc
+coding-for-visualisations
 using-ggplot
 using-geom_point
 availability-of-different-point-styles
@@ -10,8 +11,11 @@ simple-bar-plot
 line-plots
 simple-line-plot
 multiple-lines-plot
+line-plots-1
+simple-line-plot-1
+multiple-lines-plot-1
+using-geom_point-1
+availability-of-different-point-styles-1
 scatter-plots
 simple-scatter-plot
 multiple-scatter-plot
-plots-for-specific-types-of-comparisons
-bookdown-and-ea-forum-organisation-collophon-formatting

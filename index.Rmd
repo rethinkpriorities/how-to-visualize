@@ -1,4 +1,4 @@
---- 
+---
 title: "How to Visualize"
 author: "Rethink Priorities"
 date: "`r Sys.Date()`"
@@ -34,14 +34,15 @@ This is a work in progress! At this point I would not even call it an alpha, so 
 
 ## About {-}
 
-This is a book to organize our knowledge of data visualization and to provide example code that can be reused in various Rethink Priorities projects.
+This is a book to organize our knowledge of data visualization and to provide examples, code, templates, and functions that can be used across various Rethink Priorities projects.
 
 There are several important goals we're hoping to achieve with this book:
 
-1. Establish a knowledge base about how to best represent different types of data
-2. Provide examples of code that can be copy-pasted and adjusted to suit common data visualization needs
+1. Establish a knowledge base about how to best represent different types of data and relationships
+2. Provide examples of code that can be adjusted and incorporated to suit common data visualization needs^[And 'graph and table-making functions' that can be simply applied without clutter.]
 3. Establish different color palettes that can be consistently used within and between Rethink Priorities projects
 4. Be inclusive by designing responsive and color-blind friendly graphs
+5. Build this bookdown as an 'example template' for our other bookdown work
 
 If you have feedback, please contact any of the people below or create an issue
 on the [GitHub repository](https://github.com/rethinkpriorities/how-to-visualize/issues).
@@ -54,6 +55,9 @@ Please add yourself to the list below to acknowledge your contributions.
 
 - Jamie Elsey:
 [jamie@rethinkpriorities.org](mailto:jamie@rethinkpriorities.org)
+
+- David Reinstein [dreinstein@rethinkpriorities.org](mailto:dreinstein@rethinkpriorities.org)
+
 
 ```{r include=FALSE}
 # Automatically create a bib database for R packages

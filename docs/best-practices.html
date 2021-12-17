@@ -106,6 +106,8 @@
 <li><a class="" href="bar-plots.html"><span class="header-section-number">3</span> Bar plots</a></li>
 <li><a class="" href="line-plots.html"><span class="header-section-number">4</span> Line plots</a></li>
 <li><a class="" href="scatter-plots.html"><span class="header-section-number">5</span> Scatter plots</a></li>
+<li><a class="" href="plots-for-specific-types-of-comparisons.html"><span class="header-section-number">6</span> Plots for specific types of comparisons</a></li>
+<li><a class="" href="bookdown-and-ea-forum-organisation-collophon-formatting.html"><span class="header-section-number">7</span> Bookdown and EA Forum; organisation, collophon, formatting</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
 
@@ -123,10 +125,19 @@
 <span class="header-section-number">1.1</span> <code>ggplot</code><a class="anchor" aria-label="anchor" href="#ggplot"><i class="fas fa-link"></i></a>
 </h2>
 <p>Aim to use the <code>ggplot</code> R package for creating plots. <code>ggplot</code> is a powerful visualization package and should enable us to create the kind of plots we want to present. If we all use <code>ggplot</code>, we can write code that can be re-used by each other. It also makes it easy to write custom themes and color palettes that can be re-used, which will produce a consistency within and between projects that people are likely to appreciate.</p>
+<p>Always save the plot as an object in the environment as well as printing it where it belongs.</p>
+<p>‘Piping data into the ggplot’ to make the code more portable and readable. Keep steps separate.</p>
 </div>
-<div id="labeling" class="section level2" number="1.2">
+<div id="re-usability" class="section level2" number="1.2">
 <h2>
-<span class="header-section-number">1.2</span> Labeling<a class="anchor" aria-label="anchor" href="#labeling"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.2</span> Re-usability<a class="anchor" aria-label="anchor" href="#re-usability"><i class="fas fa-link"></i></a>
+</h2>
+<p>Ideally, we will come up with a set of functions and default options for the key sets of plots we use and like. Otherwise define sets of common options for plots in one place, and repeated ggplot elements together as a list to avoid repetition and clutter and to to allow easy ‘global’ adjustment.</p>
+<p>However, there are times in which too much automation makes things less flexible and increases mental overhead. We’ll come to good compromises.</p>
+</div>
+<div id="labeling" class="section level2" number="1.3">
+<h2>
+<span class="header-section-number">1.3</span> Labeling<a class="anchor" aria-label="anchor" href="#labeling"><i class="fas fa-link"></i></a>
 </h2>
 <p>Use readable but concise labels. Examples of good labels are:</p>
 <ul>
@@ -137,6 +148,8 @@
 <ul>
 <li>amt_don</li>
 </ul>
+<p>Coding-wise: Define and reuse lists of labels (or use inherent labeling options where these exist, to exploit existing variable and value labels.)</p>
+
 </div>
 </div>
   <div class="chapter-nav">
@@ -147,7 +160,8 @@
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#best-practices"><span class="header-section-number">1</span> Best practices</a></li>
 <li><a class="nav-link" href="#ggplot"><span class="header-section-number">1.1</span> ggplot</a></li>
-<li><a class="nav-link" href="#labeling"><span class="header-section-number">1.2</span> Labeling</a></li>
+<li><a class="nav-link" href="#re-usability"><span class="header-section-number">1.2</span> Re-usability</a></li>
+<li><a class="nav-link" href="#labeling"><span class="header-section-number">1.3</span> Labeling</a></li>
 </ul>
 
       <div class="book-extra">
