@@ -16,8 +16,8 @@ simple-scatter-plot
 jittered-scatter-plot
 multiple-scatter-plot
 likert-plots
+forest-plots
 treemaps
 a-simple-treemap
 a-simple-treemap-with-text
-forest-plots
 ea-forum
