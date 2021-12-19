@@ -1,5 +1,6 @@
-# Forest plots: for CI's/ranges^[...of values or 'effects'] by group^[... or by model or specification]
+# Forest plots
 
+for CI's/ranges^[...of values or 'effects'] by group^[... or by model or specification]
 
 ```{r}
 

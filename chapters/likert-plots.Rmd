@@ -69,18 +69,3 @@ mutate_eng <- function(df) {
 ```
 
 
-```{r}
-
-#eas_20 <- mutate(engage_high_n = as.numeric(engage_cats_2=="4-5"))
-
-(
-engage_by_age <- eas_20 %>%
-  mutate_eng %>%
-    ggplot() +
- aes(x = fct_rev(age_approx_ranges) ) +
-  engage_stack_layers +
-    labs(title = "Engagement x 'Age'", x="Age", y="share", 
-         caption = "95% CI bars for 'share 4-5 engaged'  in pink, 1 SE in purple")
-)
-```
-

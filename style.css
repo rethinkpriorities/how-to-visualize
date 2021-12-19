@@ -19,7 +19,6 @@
 }
 
 .toggle-code-button:focus {
-  
   box-shadow: none;
 }
 
@@ -42,4 +41,31 @@ pre {
   top: -9px;
 }
 
+/* Foldable sections */
+
+.foldable {
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border-radius: 0.2rem;
+  background-color: #f6f6f6;
+}
+
+.foldable-button {
+  display: block !important;
+  padding: .375rem;
+  color: #212529;
+}
+
+.foldable-button:hover {
+  text-decoration: underline;
+}
+
+.foldable p {
+  margin-bottom: 0;
+  padding: .375rem;
+}
+
+.folded {
+  display: none;
+}
 

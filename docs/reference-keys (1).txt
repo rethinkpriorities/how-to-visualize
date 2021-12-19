@@ -8,7 +8,6 @@ using-geom_point
 availability-of-different-point-styles
 bar-plots
 simple-bar-plot
-stacked-bar-plots
 line-plots
 simple-line-plot
 multiple-lines-plot
@@ -17,8 +16,8 @@ simple-scatter-plot
 jittered-scatter-plot
 multiple-scatter-plot
 likert-plots
-forest-plots
 treemaps
 a-simple-treemap
 a-simple-treemap-with-text
+forest-plots
 ea-forum

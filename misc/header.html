@@ -30,6 +30,47 @@
       }
     }
     
+    function toggleText() {
+      // Find the foldable div this button belongs to
+      const div = this.parentNode;
+      
+      // Loop over the elements and toggle the folded class
+      for (child of div.children) {
+        child.classList.toggle("folded")
+      }
+      
+      // Toggle the text of the button
+      const button = this
+      if (button.textContent == "Show me more") {
+        button.textContent = "Show me less"
+      } else {
+        button.textContent = "Show me more"
+      }
+    }
+    
+    function addFoldButtons() {
+      // Create a fold button
+      var button = document.createElement("button")
+      button.textContent = "Show me more"
+      button.className = "btn foldable-button"
+      button.onclick = toggleText
+      
+      // Find all foldable divs
+      var foldableDivs = document.getElementsByClassName("foldable")
+      
+      // Loop over the foldable divs to add a folded class to each child and 
+      // add a foldable button at the bottom
+      for (let div of foldableDivs) {
+        
+        const children = div.children;
+        for (let child of children) {
+          child.classList.toggle("folded")
+        }
+        
+        div.insertBefore(button, div.firstChild)
+      }
+    }
+    
     window.onload = function() {
       // Check if there are any code sections on the page
       var codeBlocks = document.getElementsByClassName("sourceCode")
@@ -38,7 +79,6 @@
       if (codeBlocks.length > 0) {
         // Find the book-extra class element on the right side of the page
         var extra = document.getElementsByClassName("book-extra").item(1)
-        console.log(extra)
         
         // Create a settings label
         var label = document.createElement("p")
@@ -57,6 +97,9 @@
         // Add the button to the book-extra element
         extra.appendChild(button)
       }
+      
+      // Add foldable text buttons
+      addFoldButtons()
     }
   </script>
 </header>

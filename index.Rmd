@@ -19,6 +19,7 @@ library(tidyverse)
 library(viridis)
 library(plotly)
 
+# Load the custom rethink ggplot theme
 theme_rethink <- function() {
   theme(
     panel.background = element_rect(fill = "gray95")
