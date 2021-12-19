@@ -60,6 +60,10 @@ pre {
   text-decoration: underline;
 }
 
+.foldable-button:focus {
+  box-shadow: none;
+}
+
 .foldable p {
   margin-bottom: 0;
   padding: .375rem;
