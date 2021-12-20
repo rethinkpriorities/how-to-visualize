@@ -21,6 +21,18 @@ Stacked bar plots can be used to add additional information to a bar plot.
 Hello **world**!
 :::
 
+Apparently, bs4_book comes with a callout block out of the box, let's check it out:
+
+::: {.rmdnote}
+
+The `bs4_book` style also includes an `.rmdnote` callout block
+like this one.
+
+```{r collapse=TRUE}
+head(beaver1, n = 5)
+```
+:::
+
 The following graph is a stacked bar plot.
 
 ```{r}

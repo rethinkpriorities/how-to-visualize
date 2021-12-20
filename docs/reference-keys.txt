@@ -21,4 +21,3 @@ forest-plots
 treemaps
 a-simple-treemap
 a-simple-treemap-with-text
-ea-forum

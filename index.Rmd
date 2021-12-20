@@ -4,7 +4,7 @@ author: "Rethink Priorities"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
-bibliography: [book.bib, packages.bib]
+bibliography: ["assets/bib/book.bib", "assets/bib/packages.bib"]
 # url: your book url like https://bookdown.org/yihui/bookdown
 # cover-image: path to the social sharing image like images/cover.jpg
 description: |
@@ -63,6 +63,7 @@ Please add yourself to the list below to acknowledge your contributions.
 ```{r include=FALSE}
 # Automatically create a bib database for R packages
 knitr::write_bib(
-  x = c(.packages(), "bookdown", "knitr", "rmarkdown"), file = "packages.bib"
+  x = c(.packages(), "bookdown", "knitr", "rmarkdown"), 
+  file = "assets/bib/packages.bib"
 )
 ```

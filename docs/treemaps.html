@@ -121,7 +121,7 @@
           // Add foldable text buttons
           addFoldButtons()
         }
-      </script></header><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="style.css">
+      </script></header><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -153,7 +153,6 @@
 <li><a class="" href="forest-plots.html"><span class="header-section-number">7</span> Forest plots</a></li>
 <li><a class="active" href="treemaps.html"><span class="header-section-number">8</span> Treemaps</a></li>
 <li><a class="" href="references.html">References</a></li>
-<li><a class="" href="ea-forum.html"><span class="header-section-number">9</span> EA Forum</a></li>
 </ul>
 
         <div class="book-extra">
@@ -165,25 +164,25 @@
 <h1>
 <span class="header-section-number">8</span> Treemaps<a class="anchor" aria-label="anchor" href="#treemaps"><i class="fas fa-link"></i></a>
 </h1>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Load packages</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://wilkox.org/treemapify/">treemapify</a></span><span class="op">)</span></code></pre></div>
 <div id="a-simple-treemap" class="section level2" number="8.1">
 <h2>
 <span class="header-section-number">8.1</span> A simple treemap<a class="anchor" aria-label="anchor" href="#a-simple-treemap"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">G20</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>area <span class="op">=</span> <span class="va">gdp_mil_usd</span>, fill <span class="op">=</span> <span class="va">hdi</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://wilkox.org/treemapify/reference/geom_treemap.html">geom_treemap</a></span><span class="op">(</span><span class="op">)</span>
 
 <span class="va">p</span></code></pre></div>
-<div class="inline-figure"><img src="how_to_visualize_files/figure-html/unnamed-chunk-16-1.png" width="672"></div>
+<div class="inline-figure"><img src="how_to_visualize_files/figure-html/unnamed-chunk-17-1.png" width="672"></div>
 </div>
 <div id="a-simple-treemap-with-text" class="section level2" number="8.2">
 <h2>
 <span class="header-section-number">8.2</span> A simple treemap with text<a class="anchor" aria-label="anchor" href="#a-simple-treemap-with-text"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">G20</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>area <span class="op">=</span> <span class="va">gdp_mil_usd</span>, fill <span class="op">=</span> <span class="va">hdi</span>, label <span class="op">=</span> <span class="va">country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://wilkox.org/treemapify/reference/geom_treemap.html">geom_treemap</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://wilkox.org/treemapify/reference/geom_treemap_text.html">geom_treemap_text</a></span><span class="op">(</span>
@@ -194,7 +193,7 @@
   <span class="op">)</span>
 
 <span class="va">p</span></code></pre></div>
-<div class="inline-figure"><img src="how_to_visualize_files/figure-html/unnamed-chunk-17-1.png" width="672"></div>
+<div class="inline-figure"><img src="how_to_visualize_files/figure-html/unnamed-chunk-18-1.png" width="672"></div>
 
 </div>
 </div>
@@ -223,7 +222,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>How to Visualize</strong>" was written by Rethink Priorities. It was last built on 2021-12-19.</p>
+    <p>"<strong>How to Visualize</strong>" was written by Rethink Priorities. It was last built on 2021-12-20.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
