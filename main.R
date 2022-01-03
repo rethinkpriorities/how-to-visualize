@@ -21,14 +21,14 @@ here <- here::here()
 rename_all <- dplyr::rename_all
 rename <- dplyr::rename
 
-#NOTE: I USUALLY USE THE SUFF BELOW FOR SETUP, BUT I COMMENTED IT OUT HERE FOR NOW 
+#NOTE: I USUALLY USE THE SUFF BELOW FOR SETUP, BUT I COMMENTED IT OUT HERE FOR NOW
 #... Import setup for this project using template from dr-rstuff  ####
 
 dir.create(here("code"))
 
 try_download(
   "https://raw.githubusercontent.com/daaronr/dr-rstuff/master/functions/project_setup.R",
-  here::here("code", "project_setup.R")
+  here::here("assets", "R", "project_setup.R")
 )
 
 # try_download(
@@ -38,9 +38,24 @@ try_download(
 
 # RENV: We can just have renv search for and install these (in Rstudio it reminds you; otherwise use call `renv::dependencies()` or `renv::hydrate` I think. )
 
-source(here::here("code", "project_setup.R"))
+source(here::here("assets", "R", "project_setup.R"))
 
-source(here("code", "plotting_functions.R"))
+my.file.rename <- function(from, to) {
+  todir <- dirname(to)
+  if (!isTRUE(file.info(todir)$isdir)) dir.create(todir, recursive=TRUE)
+  file.rename(from = from,  to = to)
+}
+
+#annoying workaround to clean up folder structure without changing project_setup.R
+my.file.rename(from = here::here("code", "plotting_functions.R"),
+               to = here::here("assets", "R", "plotting_functions.R"))
+my.file.rename(from = here::here("code", "baseoptions.R"),
+               to = here::here("assets", "R", "baseoptions.R"))
+my.file.rename(from = here::here("code", "functions.R"),
+               to = here::here("assets", "R", "functions.R"))
+unlink(here::here("code"), recursive = TRUE)
+
+source(here("assets", "R", "plotting_functions.R"))
 
 #source(here::here("code", "download_formatting.R"))
 
@@ -56,19 +71,19 @@ source(here("code", "plotting_functions.R"))
 
 p_load("bettertrace") #better tracking after bugs
 
-
 # NOT WORKING YET ...  Read in EAS (or other) data for examples ####
 
 print("NOTE: You need to follow steps at https://stackoverflow.com/questions/62336550/source-data-r-from-private-repository for this import to work, and you need access")
-
-library(httr)
-req <- content(GET(
-  "https://github.com/rethinkpriorities/ea-data/raw/master/data/edited_data/eas_all.Rdata",
-  add_headers(Authorization =  Sys.getenv("R_GITHUB"))
-), as = "parsed")
-tmp <- tempfile()
-r1 <- GET(req$download_url, write_disk(tmp))
-load(tmp)
+# 
+# library(httr)
+# req <- content(GET(
+#   "https://github.com/rethinkpriorities/ea-data/raw/master/data/edited_data/eas_20.Rdata",
+#   add_headers(Authorization =  Sys.getenv("R_GITHUB"))
+# ), as = "parsed")
+# 
+# tmp <- tempfile()
+# r1 <- GET(req$download_url, write_disk(tmp))
+# load(tmp)
 
 
 # Workaround EAS input - requires manual access/moving data ####

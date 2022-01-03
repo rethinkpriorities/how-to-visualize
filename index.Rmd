@@ -5,12 +5,12 @@ date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: ["assets/bib/book.bib", "assets/bib/packages.bib"]
-# url: your book url like https://bookdown.org/yihui/bookdown
-# cover-image: path to the social sharing image like images/cover.jpg
-description: |
-  This is a collection of examples, color schemes, best practices, and tips to produce beautiful and informative data visualizations.
+
+always_allow_html: yes
 link-citations: yes
 github-repo: rethinkpriorities/how-to-visualize
+description: "Template testing this format"
+tags: [Testing]
 ---
 
 ```{r, setup, include=FALSE}
@@ -63,7 +63,7 @@ Please add yourself to the list below to acknowledge your contributions.
 ```{r include=FALSE}
 # Automatically create a bib database for R packages
 knitr::write_bib(
-  x = c(.packages(), "bookdown", "knitr", "rmarkdown"), 
+  x = c(.packages(), "bookdown", "knitr", "rmarkdown"),
   file = "assets/bib/packages.bib"
 )
 ```
