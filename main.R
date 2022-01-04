@@ -2,6 +2,8 @@
 
 #### Setup ####
 
+#devtools::install_github("rethinkpriorities/rp-r-package")
+
 try_download <- function(url, path) {
   new_path <- gsub("[.]", "X.", path)
   tryCatch({
@@ -21,7 +23,7 @@ here <- here::here()
 rename_all <- dplyr::rename_all
 rename <- dplyr::rename
 
-#NOTE: I USUALLY USE THE SUFF BELOW FOR SETUP, BUT I COMMENTED IT OUT HERE FOR NOW
+#NOTE: I USUALLY USE THE STUFF BELOW FOR SETUP, BUT I COMMENTED IT OUT HERE FOR NOW
 #... Import setup for this project using template from dr-rstuff  ####
 
 dir.create(here("code"))
@@ -85,31 +87,39 @@ print("NOTE: You need to follow steps at https://stackoverflow.com/questions/623
 # r1 <- GET(req$download_url, write_disk(tmp))
 # load(tmp)
 
+#key_set("github-API") ... entered my GH PAT 4 Jan 2022 
+#You need to set your own github-API for this to work!
 
-# Workaround EAS input - requires manual access/moving data ####
+require(rethinkpriorities)
 
-pp("NOTE: If you have access to this data, move it in, and remember to preserve the 'gitignore'")
+eas_all <- read_file_from_repo(
+  repo = "ea-data",
+  path = "data/edited_data/eas_all.Rdata",
+  user = "rethinkpriorities",
+  token_key = "github-API",
+  private = TRUE
+)
 
-# ... Cheesy code to move things over manually ####
-dir.create(here("data_to_gitignore"))
+eas_20 <- read_file_from_repo("ea-data",  "data/edited_data/eas_20.Rdata", "github-API", private = TRUE )
 
-file.copy(from = "../ea-data/data/edited_data/eas_20.Rdata", to = "data_to_gitignore/eas_20.Rdata")
 
-file.copy(from = "../ea-data/data/edited_data/eas_20.Rdata", to = "data_to_gitignore/eas_all.Rdata")
+pp("NOTE: If you have access to this data and save it somewhere,  remember to 'gitignore'; but ideally you use the above and it's not necessary")
 
-eas_all <- readRDS(here("data_to_gitignore", "eas_all.Rdata"))
-eas_20 <- readRDS(here("data_to_gitignore",  "eas_20.Rdata"))
-
+# ... (CUT) Cheesy code to move things over manually ####
+#dir.create(here("data_to_gitignore"))
+#file.copy(from = "../ea-data/data/edited_data/eas_20.Rdata", to = "data_to_gitignore/eas_20.Rdata")
+#etc
 
 #### BUILD the bs4_book bookdown ####
 #The line below should 'build the bookdown' in the order specified in `_bookdown.yml`
 #remotes::install_github("rstudio/bslib")
 #install.packages("downlit")
 #remotes::install_github("rstudio/bookdown")
+
 library(downlit)
 
-library(bs4_book)
-library(bookdown)
+#library(bs4_book)
+#library(bookdown)
 
 
 {
