@@ -39,7 +39,7 @@
           
           // Toggle the button's class
           button.classList.toggle("code-hidden")
-        
+
           // Update the button text
           if (button.classList.contains("code-hidden")) {
             button.textContent = "Show All Code"
@@ -47,16 +47,16 @@
             button.textContent = "Hide All Code"
           }
         }
-        
+
         function toggleText() {
           // Find the foldable div this button belongs to
           const div = this.parentNode;
-          
+
           // Loop over the elements and toggle the folded class
           for (child of div.children) {
             child.classList.toggle("folded")
           }
-          
+
           // Toggle the text of the button
           const button = this
           if (button.textContent == "Show me more") {
@@ -65,14 +65,14 @@
             button.textContent = "Show me more"
           }
         }
-        
+
         function addFoldButtons() {
           // Create a fold button
           const button = document.createElement("button")
           button.textContent = "Show me more"
           button.className = "btn foldable-button"
           button.onclick = toggleText
-          
+
           // Find all foldable divs
           const foldableDivs = document.getElementsByClassName("foldable")
           
@@ -83,11 +83,11 @@
             for (let child of children) {
               child.classList.toggle("folded")
             }
-            
+
             div.insertBefore(button, div.firstChild)
           }
         }
-        
+
         window.onload = function() {
           // Check if there are any code sections on the page
           const codeBlocks = document.getElementsByClassName("sourceCode")
@@ -125,7 +125,7 @@
             // Run the toggleAllCode once to hide the code blocks by default
             toggleAllCode()
           }
-          
+
           // Add foldable text buttons
           addFoldButtons()
         }
@@ -154,12 +154,10 @@
 <li><a class="" href="index.html">How to Visualize</a></li>
 <li><a class="active" href="best-practices.html"><span class="header-section-number">1</span> Best practices</a></li>
 <li><a class="" href="using-ggplot.html"><span class="header-section-number">2</span> Using ggplot</a></li>
-<li><a class="" href="bar-plots.html"><span class="header-section-number">3</span> Bar plots</a></li>
-<li><a class="" href="line-plots.html"><span class="header-section-number">4</span> Line plots</a></li>
-<li><a class="" href="scatter-plots.html"><span class="header-section-number">5</span> Scatter plots</a></li>
-<li><a class="" href="likert-plots.html"><span class="header-section-number">6</span> Likert plots</a></li>
-<li><a class="" href="forest-plots.html"><span class="header-section-number">7</span> Forest plots</a></li>
-<li><a class="" href="treemaps.html"><span class="header-section-number">8</span> Treemaps</a></li>
+<li><a class="" href="basic-plots.html"><span class="header-section-number">3</span> Basic plots</a></li>
+<li><a class="" href="likert-plots.html"><span class="header-section-number">4</span> Likert plots</a></li>
+<li><a class="" href="forest-plots.html"><span class="header-section-number">5</span> Forest plots</a></li>
+<li><a class="" href="treemaps.html"><span class="header-section-number">6</span> Treemaps</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
 
