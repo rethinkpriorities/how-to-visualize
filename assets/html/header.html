@@ -19,7 +19,7 @@
       
       // Toggle the button's class
       button.classList.toggle("code-hidden")
-    
+
       // Update the button text
       if (button.classList.contains("code-hidden")) {
         button.textContent = "Show All Code"
@@ -27,16 +27,16 @@
         button.textContent = "Hide All Code"
       }
     }
-    
+
     function toggleText() {
       // Find the foldable div this button belongs to
       const div = this.parentNode;
-      
+
       // Loop over the elements and toggle the folded class
       for (child of div.children) {
         child.classList.toggle("folded")
       }
-      
+
       // Toggle the text of the button
       const button = this
       if (button.textContent == "Show me more") {
@@ -45,14 +45,14 @@
         button.textContent = "Show me more"
       }
     }
-    
+
     function addFoldButtons() {
       // Create a fold button
       const button = document.createElement("button")
       button.textContent = "Show me more"
       button.className = "btn foldable-button"
       button.onclick = toggleText
-      
+
       // Find all foldable divs
       const foldableDivs = document.getElementsByClassName("foldable")
       
@@ -63,11 +63,11 @@
         for (let child of children) {
           child.classList.toggle("folded")
         }
-        
+
         div.insertBefore(button, div.firstChild)
       }
     }
-    
+
     window.onload = function() {
       // Check if there are any code sections on the page
       const codeBlocks = document.getElementsByClassName("sourceCode")
@@ -105,7 +105,7 @@
         // Run the toggleAllCode once to hide the code blocks by default
         toggleAllCode()
       }
-      
+
       // Add foldable text buttons
       addFoldButtons()
     }
