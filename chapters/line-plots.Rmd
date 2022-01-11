@@ -2,6 +2,10 @@
 
 ## Simple line plot
 
+::: {.foldable}
+Yes, I just did.
+:::
+
 ```{r}
 p <- ggplot(economics, aes(x = date, y = unemploy)) + 
   geom_line() +

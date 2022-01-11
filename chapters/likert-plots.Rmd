@@ -1,6 +1,6 @@
 # Likert plots
 
-```{r}
+```{r, message=FALSE}
 # Load packages
 library(likert)
 
