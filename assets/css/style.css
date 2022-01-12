@@ -1,24 +1,29 @@
 
 /* Chapter settings styling */
 
+.settings {
+  margin-top: 1.5rem;
+}
+
 .settings-label {
+  font-size: 0.9rem;
   font-weight: 500;
   margin-bottom: 0.25rem;
 }
 
 /* Toggle code visibility styling */ 
-.toggle-code-button {
+#toggle-code-button {
   font-size: 0.9rem;
   padding-left: 0;
   color: #42708E;
 }
 
-.toggle-code-button:hover {
+#toggle-code-button:hover {
   color: #42708E;
   text-decoration: underline;
 }
 
-.toggle-code-button:focus {
+#toggle-code-button:focus {
   box-shadow: none;
 }
 

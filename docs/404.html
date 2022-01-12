@@ -21,27 +21,25 @@
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
 <script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><header><script>
         function toggleAllCode() {
-          const button = this
-        
-          // Find all pre tags and copy buttons
-          var preTags = document.querySelectorAll("pre")
-          var copyButtons = document.getElementsByClassName("btn-copy")
+          // Find all the sourceCode elements
+          const elements = document.getElementsByClassName("sourceCode")
           
-          // Loop over the pre elements and toggle the hidden class
-          for (let pre of preTags) {
-            if (pre.classList.contains("sourceCode")) {
-              pre.classList.toggle("hidden")
+          // Loop over the elements and toggle the 'hidden' class if the element
+          // is a div
+          for (let element of elements) {
+            if (element.nodeName == "DIV") {
+              if (element.classList.contains("sourceCode")) {
+                element.classList.toggle("hidden")
+              }  
             }
           }
           
-          // Loop over the buttons and set the hidden class
-          for (let copyButton of copyButtons) {
-            copyButton.classList.toggle("hidden")
-          }
-        
+          // Update the button text
+          const button = document.getElementById("toggle-code-button")
+          
           // Toggle the button's class
           button.classList.toggle("code-hidden")
-        
+
           // Update the button text
           if (button.classList.contains("code-hidden")) {
             button.textContent = "Show All Code"
@@ -49,16 +47,16 @@
             button.textContent = "Hide All Code"
           }
         }
-        
+
         function toggleText() {
           // Find the foldable div this button belongs to
           const div = this.parentNode;
-          
+
           // Loop over the elements and toggle the folded class
           for (child of div.children) {
             child.classList.toggle("folded")
           }
-          
+
           // Toggle the text of the button
           const button = this
           if (button.textContent == "Show me more") {
@@ -67,57 +65,67 @@
             button.textContent = "Show me more"
           }
         }
-        
+
         function addFoldButtons() {
           // Create a fold button
-          var button = document.createElement("button")
+          const button = document.createElement("button")
           button.textContent = "Show me more"
           button.className = "btn foldable-button"
           button.onclick = toggleText
-          
+
           // Find all foldable divs
-          var foldableDivs = document.getElementsByClassName("foldable")
+          const foldableDivs = document.getElementsByClassName("foldable")
           
           // Loop over the foldable divs to add a folded class to each child and 
           // add a foldable button at the bottom
           for (let div of foldableDivs) {
-            
             const children = div.children;
             for (let child of children) {
               child.classList.toggle("folded")
             }
-            
+
             div.insertBefore(button, div.firstChild)
           }
         }
-        
+
         window.onload = function() {
           // Check if there are any code sections on the page
-          var codeBlocks = document.getElementsByClassName("sourceCode")
+          const codeBlocks = document.getElementsByClassName("sourceCode")
           
           // Add toggle code button, but only if there are code blocks
           if (codeBlocks.length > 0) {
-            // Find the book-extra class element on the right side of the page
-            var extra = document.getElementsByClassName("book-extra").item(1)
+            // Find the sidebar-chapter element on the right side of the page
+            const sidebar = document.getElementsByClassName("sidebar-chapter").item(0)
+            
+            // Create a settings div
+            const settings = document.createElement("div")
+            settings.className = "settings"
             
             // Create a settings label
-            var label = document.createElement("p")
+            const label = document.createElement("p")
             label.textContent = "Settings"
             label.className = "settings-label"
             
-            // Add the label to the book-extra element
-            extra.appendChild(label)
+            // Add the label to the settings div
+            settings.appendChild(label)
           
-            // Create a button
-            var button = document.createElement("button")
-            button.textContent = "Hide All Code"
-            button.className = "btn toggle-code-button active-code"
+            // Create the toggle all code button
+            const button = document.createElement("button")
+            button.textContent = "Show All Code"
+            button.id = "toggle-code-button"
+            button.className = "btn"
             button.onclick = toggleAllCode
             
-            // Add the button to the book-extra element
-            extra.appendChild(button)
+            // Add the button to the settings div
+            settings.appendChild(button)
+            
+            // Add the settings div to the beginning of the sidebar
+            sidebar.insertBefore(settings, sidebar.firstChild)
+            
+            // Run the toggleAllCode once to hide the code blocks by default
+            toggleAllCode()
           }
-          
+
           // Add foldable text buttons
           addFoldButtons()
         }
@@ -146,12 +154,10 @@
 <li><a class="" href="index.html">How to Visualize</a></li>
 <li><a class="" href="best-practices.html"><span class="header-section-number">1</span> Best practices</a></li>
 <li><a class="" href="using-ggplot.html"><span class="header-section-number">2</span> Using ggplot</a></li>
-<li><a class="" href="bar-plots.html"><span class="header-section-number">3</span> Bar plots</a></li>
-<li><a class="" href="line-plots.html"><span class="header-section-number">4</span> Line plots</a></li>
-<li><a class="" href="scatter-plots.html"><span class="header-section-number">5</span> Scatter plots</a></li>
-<li><a class="" href="likert-plots.html"><span class="header-section-number">6</span> Likert plots</a></li>
-<li><a class="" href="forest-plots.html"><span class="header-section-number">7</span> Forest plots</a></li>
-<li><a class="" href="treemaps.html"><span class="header-section-number">8</span> Treemaps</a></li>
+<li><a class="" href="basic-plots.html"><span class="header-section-number">3</span> Basic plots</a></li>
+<li><a class="" href="likert-plots.html"><span class="header-section-number">4</span> Likert plots</a></li>
+<li><a class="" href="forest-plots.html"><span class="header-section-number">5</span> Forest plots</a></li>
+<li><a class="" href="treemaps.html"><span class="header-section-number">6</span> Treemaps</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
 
@@ -179,7 +185,7 @@ the table of contents to find the page you are looking for.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>How to Visualize</strong>" was written by Rethink Priorities. It was last built on 2022-01-04.</p>
+    <p>"<strong>How to Visualize</strong>" was written by Rethink Priorities. It was last built on 2022-01-11.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
