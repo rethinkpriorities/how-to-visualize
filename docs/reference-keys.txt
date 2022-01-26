@@ -17,6 +17,10 @@ line-plots
 simple-line-plot
 multiple-lines-plot
 likert-plots
+plotting-a-single-likert-scale-response
+a-bar-plot
+plotting-multiple-likert-scale-responses
+a-stacked-bar-plot
 forest-plots
 treemaps
 a-simple-treemap

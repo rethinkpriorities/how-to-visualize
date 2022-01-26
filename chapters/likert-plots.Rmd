@@ -1,8 +1,14 @@
 # Likert plots
 
-```{r, message=FALSE}
+```{r, message=FALSE, echo=FALSE}
 # Load packages
 library(likert)
+library(rethinkpriorities)
+library(tidyverse)
+library(plotly)
+library(scales)
+library(viridis)
+library(ggrepel)
 
 # Load data
 data(pisaitems)
@@ -11,13 +17,163 @@ data(pisaitems)
 items <- pisaitems %>%
   as_tibble() %>%
   select(starts_with("ST25")) %>%
-  rename(
-    Magazines = ST25Q01,
-    `Comic books` = ST25Q02,
-    Fiction = ST25Q03,
-    `Non-fiction books` = ST25Q04,
-    Newspaper = ST25Q05
+  pivot_longer(
+    cols = everything(), 
+    names_to = "item", 
+    values_to = "response"
+  ) %>%
+  mutate(
+    response_num = as.numeric(response),
+    item = dplyr::recode(item, 
+      "ST25Q01" = "magazines",
+      "ST25Q02" = "comic books",
+      "ST25Q03" = "fiction books",
+      "ST25Q04" = "non-fiction books",
+      "ST25Q05" = "newspaper"
+    ),
+    item = fct_reorder(item, response_num, mean, na.rm = TRUE)
   )
+
+# Calculate counts and proportions
+counts <- items %>% 
+  filter(!is.na(response)) %>%
+  group_by(item, response) %>%
+  summarize(
+    response_num = first(response_num),
+    n = n()
+  ) %>%
+  mutate(pct = n / sum(n)) %>%
+  ungroup()
+
+# Filter one item from the 'items' data frame
+magazines <- filter(items, item == "magazines" & !is.na(response))
+
+# Calculate counts and proportions
+magazines_counts <- magazines %>%
+  group_by(response) %>%
+  summarize(
+    response_num = first(response_num),
+    n = n()
+  ) %>%
+  mutate(pct = n / sum(n))
+```
+
+## Plotting a single Likert-scale response
+
+### A bar plot
+
+```{r}
+ggplot(magazines_counts, aes(x = response_num, y = pct, fill = response)) +
+  geom_col(alpha = .8) +
+  scale_y_continuous(labels = percent_format(accuracy = 1)) +
+  labs(
+    x = "Frequency reading magazines", 
+    y = "Percentage of respondents", 
+    fill = "Categories"
+  ) +
+  scale_fill_viridis(discrete = TRUE, option = "mako", begin = .1, end = .9) +
+  theme_minimal()
+```
+
+## Plotting multiple Likert-scale responses
+
+### A stacked bar plot
+
+```{r}
+ggplot(counts, aes(
+      x = item,
+      y = pct,
+      fill = reorder(response, desc(response))
+    )
+  ) +
+  geom_col(alpha = .8) +
+  coord_flip() +
+  geom_text(
+    mapping = aes(label = paste0(round(pct * 100), "%")),
+    position = position_stack(vjust = 0.5),
+    size = 3
+  ) +
+  scale_fill_viridis(
+    discrete = TRUE,
+    option = "mako",
+    direction = -1,
+    begin = .1,
+    end = .9
+  ) +
+  scale_y_continuous(labels = percent_format(accuracy = 1)) +
+  labs(
+    x = "",
+    y = "",
+    color = "Rating",
+    fill = "Rating"
+  ) +
+  theme_minimal()
+```
+
+```{r, message=FALSE}
+# Calculate halves of the neutral category
+counts_split <- counts %>% 
+  filter(response_num == 3) %>% 
+  mutate(pct = pct / 2) 
+
+# Replace old neutral-category
+new_counts <- filter(counts, response_num != 3)
+new_counts <- full_join(new_counts, counts_split) %>%
+  arrange(item, response_num)
+
+# Separate the data frames
+new_counts1 <- filter(new_counts, response_num %in% 1:3) 
+new_counts2 <- filter(new_counts, response_num %in% 3:5) 
+
+# Create a colors vector
+colors <- mako(n = 5, begin = .1, end = .9)
+names(colors) <- levels(counts$response)
+
+# Plot  
+p <- ggplot() +
+  geom_col(
+    data = new_counts1, 
+    mapping = aes(x = item, y = -pct, fill = response), 
+    alpha = .8
+  ) +
+  geom_col(
+    data = new_counts2, 
+    mapping = aes(x = item, y = pct, fill = response), 
+    position = position_stack(reverse = TRUE),
+    alpha = .8
+  ) +
+  coord_flip() +
+  scale_y_continuous(labels = percent_format(accuracy = 1)) +
+  scale_fill_manual(values = colors) +
+  labs(x = "", y = "", fill = "Category:") +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+
+p 
+```
+
+```{r}
+# Create labels
+labels <- counts %>%
+  group_by(item) %>%
+  mutate(
+    temp = case_when(
+      response_num == 3 ~ pct / 2,
+      response_num < 4 ~ pct,
+      TRUE ~ 0),
+    bottom_half = sum(temp),
+    pos = cumsum(pct) - (pct / 2) - bottom_half
+  )
+
+p + geom_text(
+  data = labels, 
+  mapping = aes(
+    x = item, 
+    y = pos, 
+    label = paste0(round(pct * 100), "%")
+  ),
+  size = 2.5
+)
 ```
 
 The combination of stacked bar charts and overlayed error/CI bars for some 'middle split' seems informative:

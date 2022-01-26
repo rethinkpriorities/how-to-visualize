@@ -5,12 +5,11 @@ date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: ["assets/bib/book.bib", "assets/bib/packages.bib"]
-
 always_allow_html: yes
 link-citations: yes
 github-repo: rethinkpriorities/how-to-visualize
-description: "Template testing this format"
-tags: [Testing]
+description: "A collection of tips and tricks for data visualization"
+tags: [data visualization]
 ---
 
 ```{r, setup, include=FALSE}
@@ -40,10 +39,10 @@ This is a book to organize our knowledge of data visualization and to provide ex
 There are several important goals we're hoping to achieve with this book:
 
 1. Establish a knowledge base about how to best represent different types of data and relationships
-2. Provide examples of code that can be adjusted and incorporated to suit common data visualization needs^[And 'graph and table-making functions' that can be simply applied without clutter.]
-3. Establish different color palettes that can be consistently used within and between Rethink Priorities projects
-4. Be inclusive by designing responsive and color-blind friendly graphs
-5. Build this bookdown as an 'example template' for our other bookdown work
+2. Showcase examples of functions from the `rethinkpriorities` package that relate to data visualization
+3. Provide examples of code that can be adjusted and incorporated to suit common data visualization needs
+4. Establish different color palettes that can be consistently used within and between Rethink Priorities projects
+5. Be inclusive by designing responsive and color-blind friendly graphs
 
 If you have feedback, please contact any of the people below or create an issue
 on the [GitHub repository](https://github.com/rethinkpriorities/how-to-visualize/issues).

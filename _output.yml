@@ -1,6 +1,15 @@
-bookdown::bs4_book:
+bookdown::gitbook:
   css: "assets/css/style.css"
   includes:
     in_header: "assets/html/header.html"
-  theme:
-    primary: "#42708e"
+  config: 
+    toc:
+      before: >
+        <div class="toc-before">
+          <img src="assets/img/logo.png"/>
+          <span>Bookdown Template</span>
+        </div>
+    sharing:
+      twitter: no
+      facebook: no
+      all: no  
