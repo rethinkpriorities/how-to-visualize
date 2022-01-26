@@ -5,16 +5,12 @@
 library(treemapify)
 ```
 
-## A simple treemap
-
 ```{r}
 p <- ggplot(G20, aes(area = gdp_mil_usd, fill = hdi)) +
   geom_treemap()
 
 p
 ```
-
-## A simple treemap with text
 
 ```{r}
 p <- ggplot(G20, aes(area = gdp_mil_usd, fill = hdi, label = country)) +

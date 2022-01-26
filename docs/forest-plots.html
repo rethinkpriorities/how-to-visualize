@@ -252,7 +252,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="using-ggplot.html"><a href="using-ggplot.html"><i class="fa fa-check"></i><b>2</b> Using ggplot</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="using-ggplot.html"><a href="using-ggplot.html#using-geom_point"><i class="fa fa-check"></i><b>2.1</b> Using geom_point</a></li>
-<li class="chapter" data-level="2.2" data-path="using-ggplot.html"><a href="using-ggplot.html#availability-of-different-point-styles"><i class="fa fa-check"></i><b>2.2</b> Availability of different point styles</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="basic-plots.html"><a href="basic-plots.html"><i class="fa fa-check"></i><b>3</b> Basic plots</a>
 <ul>
@@ -274,21 +273,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4" data-path="likert-plots.html"><a href="likert-plots.html"><i class="fa fa-check"></i><b>4</b> Likert plots</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="likert-plots.html"><a href="likert-plots.html#plotting-a-single-likert-scale-response"><i class="fa fa-check"></i><b>4.1</b> Plotting a single Likert-scale response</a>
-<ul>
-<li class="chapter" data-level="4.1.1" data-path="likert-plots.html"><a href="likert-plots.html#a-bar-plot"><i class="fa fa-check"></i><b>4.1.1</b> A bar plot</a></li>
-</ul></li>
-<li class="chapter" data-level="4.2" data-path="likert-plots.html"><a href="likert-plots.html#plotting-multiple-likert-scale-responses"><i class="fa fa-check"></i><b>4.2</b> Plotting multiple Likert-scale responses</a>
-<ul>
-<li class="chapter" data-level="4.2.1" data-path="likert-plots.html"><a href="likert-plots.html#a-stacked-bar-plot"><i class="fa fa-check"></i><b>4.2.1</b> A stacked bar plot</a></li>
-</ul></li>
+<li class="chapter" data-level="4.1" data-path="likert-plots.html"><a href="likert-plots.html#single-item-plot"><i class="fa fa-check"></i><b>4.1</b> Single item plot</a></li>
+<li class="chapter" data-level="4.2" data-path="likert-plots.html"><a href="likert-plots.html#multiple-items-plots"><i class="fa fa-check"></i><b>4.2</b> Multiple items plots</a></li>
+<li class="chapter" data-level="4.3" data-path="likert-plots.html"><a href="likert-plots.html#to-do"><i class="fa fa-check"></i><b>4.3</b> To do</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="forest-plots.html"><a href="forest-plots.html"><i class="fa fa-check"></i><b>5</b> Forest plots</a></li>
-<li class="chapter" data-level="6" data-path="treemaps.html"><a href="treemaps.html"><i class="fa fa-check"></i><b>6</b> Treemaps</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="treemaps.html"><a href="treemaps.html#a-simple-treemap"><i class="fa fa-check"></i><b>6.1</b> A simple treemap</a></li>
-<li class="chapter" data-level="6.2" data-path="treemaps.html"><a href="treemaps.html#a-simple-treemap-with-text"><i class="fa fa-check"></i><b>6.2</b> A simple treemap with text</a></li>
-</ul></li>
+<li class="chapter" data-level="6" data-path="treemaps.html"><a href="treemaps.html"><i class="fa fa-check"></i><b>6</b> Treemaps</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
 
@@ -309,26 +299,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="forest-plots" class="section level1" number="5">
 <h1><span class="header-section-number">5</span> Forest plots</h1>
-<p>for CI’s/ranges<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> by group<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="forest-plots.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#grouped_forest_plot is defined in plotting_functions.R</span></span>
-<span id="cb18-2"><a href="forest-plots.html#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="forest-plots.html#cb18-3" aria-hidden="true" tabindex="-1"></a>group_fp_do <span class="ot">&lt;-</span> <span class="cf">function</span>(df, <span class="at">groups=</span>model_name, <span class="at">xlims=</span><span class="fu">c</span>(<span class="cn">NA</span>,<span class="cn">NA</span>), <span class="at">vl=</span><span class="dv">1</span>){</span>
-<span id="cb18-4"><a href="forest-plots.html#cb18-4" aria-hidden="true" tabindex="-1"></a>  df <span class="sc">%&gt;%</span></span>
-<span id="cb18-5"><a href="forest-plots.html#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grouped_forest_plot</span>(., <span class="at">groups =</span> {{groups}}, <span class="at">vline =</span> {{vl}}) <span class="sc">+</span></span>
-<span id="cb18-6"><a href="forest-plots.html#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> {{xlims}}) <span class="sc">+</span></span>
-<span id="cb18-7"><a href="forest-plots.html#cb18-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_colour_discrete</span>(<span class="at">name =</span> <span class="st">&quot;&quot;</span>,</span>
-<span id="cb18-8"><a href="forest-plots.html#cb18-8" aria-hidden="true" tabindex="-1"></a>                        <span class="at">labels =</span> <span class="cf">function</span>(x) <span class="fu">str_wrap</span>(x, <span class="at">width =</span> <span class="dv">15</span>)) <span class="sc">+</span></span>
-<span id="cb18-9"><a href="forest-plots.html#cb18-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb18-10"><a href="forest-plots.html#cb18-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>) <span class="sc">+</span></span>
-<span id="cb18-11"><a href="forest-plots.html#cb18-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill=</span><span class="fu">guide_legend</span>(<span class="at">nrow=</span><span class="dv">2</span>, <span class="at">byrow=</span><span class="cn">TRUE</span>))</span>
-<span id="cb18-12"><a href="forest-plots.html#cb18-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>for CI’s/ranges<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> by group<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="forest-plots.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#grouped_forest_plot is defined in plotting_functions.R</span></span>
+<span id="cb15-2"><a href="forest-plots.html#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="forest-plots.html#cb15-3" aria-hidden="true" tabindex="-1"></a>group_fp_do <span class="ot">&lt;-</span> <span class="cf">function</span>(df, <span class="at">groups=</span>model_name, <span class="at">xlims=</span><span class="fu">c</span>(<span class="cn">NA</span>,<span class="cn">NA</span>), <span class="at">vl=</span><span class="dv">1</span>){</span>
+<span id="cb15-4"><a href="forest-plots.html#cb15-4" aria-hidden="true" tabindex="-1"></a>  df <span class="sc">%&gt;%</span></span>
+<span id="cb15-5"><a href="forest-plots.html#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grouped_forest_plot</span>(., <span class="at">groups =</span> {{groups}}, <span class="at">vline =</span> {{vl}}) <span class="sc">+</span></span>
+<span id="cb15-6"><a href="forest-plots.html#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> {{xlims}}) <span class="sc">+</span></span>
+<span id="cb15-7"><a href="forest-plots.html#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_colour_discrete</span>(<span class="at">name =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb15-8"><a href="forest-plots.html#cb15-8" aria-hidden="true" tabindex="-1"></a>                        <span class="at">labels =</span> <span class="cf">function</span>(x) <span class="fu">str_wrap</span>(x, <span class="at">width =</span> <span class="dv">15</span>)) <span class="sc">+</span></span>
+<span id="cb15-9"><a href="forest-plots.html#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb15-10"><a href="forest-plots.html#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>) <span class="sc">+</span></span>
+<span id="cb15-11"><a href="forest-plots.html#cb15-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill=</span><span class="fu">guide_legend</span>(<span class="at">nrow=</span><span class="dv">2</span>, <span class="at">byrow=</span><span class="cn">TRUE</span>))</span>
+<span id="cb15-12"><a href="forest-plots.html#cb15-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 
 </div>
 <div class="footnotes">
 <hr />
-<ol start="3">
-<li id="fn3"><p>…of values or ‘effects’<a href="forest-plots.html#fnref3" class="footnote-back">↩︎</a></p></li>
-<li id="fn4"><p>… or by model or specification<a href="forest-plots.html#fnref4" class="footnote-back">↩︎</a></p></li>
+<ol start="1">
+<li id="fn1"><p>…of values or ‘effects’<a href="forest-plots.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>… or by model or specification<a href="forest-plots.html#fnref2" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

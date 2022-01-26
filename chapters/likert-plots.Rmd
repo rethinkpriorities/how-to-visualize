@@ -58,26 +58,29 @@ magazines_counts <- magazines %>%
   mutate(pct = n / sum(n))
 ```
 
-## Plotting a single Likert-scale response
-
-### A bar plot
+## Single item plot
 
 ```{r}
 ggplot(magazines_counts, aes(x = response_num, y = pct, fill = response)) +
   geom_col(alpha = .8) +
   scale_y_continuous(labels = percent_format(accuracy = 1)) +
+  geom_text(
+    mapping = aes(label = paste0(round(pct * 100), "%")), 
+    vjust = -0.5, 
+    size = 3
+  ) +
   labs(
     x = "Frequency reading magazines", 
     y = "Percentage of respondents", 
     fill = "Categories"
   ) +
   scale_fill_viridis(discrete = TRUE, option = "mako", begin = .1, end = .9) +
-  theme_minimal()
+  theme_minimal() +
+  guides(fill = guide_legend(nrow = 2)) +
+  theme(legend.position = "bottom")
 ```
 
-## Plotting multiple Likert-scale responses
-
-### A stacked bar plot
+## Multiple items plots
 
 ```{r}
 ggplot(counts, aes(
@@ -107,7 +110,9 @@ ggplot(counts, aes(
     color = "Rating",
     fill = "Rating"
   ) +
-  theme_minimal()
+  theme_minimal() +
+  guides(fill = guide_legend(nrow = 2)) +
+  theme(legend.position = "bottom")
 ```
 
 ```{r, message=FALSE}
@@ -147,6 +152,7 @@ p <- ggplot() +
   scale_fill_manual(values = colors) +
   labs(x = "", y = "", fill = "Category:") +
   theme_minimal() +
+  guides(fill = guide_legend(nrow = 2)) +
   theme(legend.position = "bottom")
 
 p 
@@ -176,52 +182,8 @@ p + geom_text(
 )
 ```
 
+## To do
+
 The combination of stacked bar charts and overlayed error/CI bars for some 'middle split' seems informative:
 
-See [here]("https://rethinkpriorities.github.io/ea_data_public/eas-engagement.html#summary-charts") for an example of a summary chart.
-
-
-*Coding note...*^[I 'list a bunch of options' below; I reused these across plots for EAS 2020, to make the code more concise and modular. Maybe worth functionalizing this? It would be better for this *not* to specify particular column names(`engagement`, `engage_high_n`), but have that separated out]  
-
-```{r}
-
-engage_stack_layers <- list(
-  geom_bar(aes(fill=engagement), position="fill"),
-    theme(axis.title.x = element_blank(),
-          axis.text.x = element_blank(),
-          axis.ticks.x = element_blank(),
-          axis.ticks.y = element_blank(),
-          axis.title.y = element_blank()
-    ),
-  stat_summary(aes(y = engage_high_n),
-           fun.data = mean_cl_normal,  na.rm = TRUE,
-           geom = "errorbar", colour = "pink", width = 0.2),
-stat_summary(aes(y = engage_high_n),
-           fun.data = mean_cl_normal,  na.rm = TRUE,
-           geom = "errorbar",  colour = "purple", width = 0.2,
-           fun.args = list(mult = 1)),
-     coord_flip()
-      )
-
-```
-
-
-\
-
-To give a 'CI (or other) range' on an ordered categorical outcome, you need to focus on some break point. We chose 'engagement at-or-below/above 3'.  We did some re-coding just before the visualization.^[Putting this here rather than in the build file is 'marginally OK practice' as it's coding just for a specific analysis.] 
-
-```{r}
-mutate_eng <- function(df) {
-{df} %>%
-  filter(!is.na(engagement)) %>%
-        mutate(engagement= fct_recode(engagement,
-                              "(1) None" = "(1) No engagement",
-                             "(2) Mild" = "(2) Mild engagement" ,
-                             "(3) Moderate" = "(3) Moderate engagement",
-                             "(4) Considerable" = "(4) Considerable engagement",
-                             "(5) High" = "(5) High engagement",
-                             ))
-}
-```
-
-
+See [here](https://rethinkpriorities.github.io/ea_data_public/eas-engagement.html#summary-charts) for an example of a summary chart.

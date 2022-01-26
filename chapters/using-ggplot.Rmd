@@ -7,7 +7,6 @@ editor_options:
 
 ## Using geom_point
   
-## Availability of different point styles
 Multiple different styles of point are available using the 'shape =' command, followed by the number of the desired shape. Note that different shapes will/will not allow color and fill, and also that ggplot and ggplotly display some shapes slightly differently.
 
 ```{r} 
