@@ -178,7 +178,7 @@ p + geom_text(
     y = pos, 
     label = paste0(round(pct * 100), "%")
   ),
-  size = 2.5
+  size = 3
 )
 ```
 
