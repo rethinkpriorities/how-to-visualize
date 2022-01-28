@@ -30,6 +30,10 @@ body {
   }
 }
 
+.book .book-body .page-wrapper .page-inner section.normal h2 {
+  line-height: 4rem;
+}
+
 /* Positioning */
 
 .book .book-summary {
@@ -139,7 +143,14 @@ pre code {
 }
 
 .sourceCode .r {
+  display: none;
+}
+
+/* Tables */
+
+.book .book-body .page-wrapper .page-inner section.normal table {
   display: block;
+  overflow-x: auto;
 }
 
 /* Buttons */
@@ -159,11 +170,15 @@ button {
   background-color: #f7f7f7;
 }
 
-.foldable p {
+.foldable p, .foldable ul {
   display: none;
   
   margin-top: 0.85em !important;
   margin-bottom: 0 !important;
+}
+
+.foldable aside p {
+  display: block;
 }
 
 .fold-button {
@@ -230,4 +245,22 @@ button {
 .rmdcaution .btn-copy, .rmdimportant .btn-copy, .rmdnote .btn-copy, .rmdtip .btn-copy, .rmdwarning .btn-copy {
   /* Needs to be set according to margin in callout pre block */
   right: -1rem;
+}
+
+/* Misc */
+
+.book.with-summary .book-body {
+  overflow-x: initial;
+}
+
+.book .book-body.fixed .body-inner {
+  overflow-x: initial;
+}
+
+.book .book-body .page-wrapper {
+  overflow-x: initial;
+}
+
+.book .book-body .page-wrapper .page-inner section.normal {
+  overflow-x: initial;
 }

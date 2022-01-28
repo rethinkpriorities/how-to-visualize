@@ -59,7 +59,7 @@ p <- ggplot(mtcars, aes(x = wt, y = mpg, color = factor(cyl))) +
   geom_point(alpha = .85) +
   scale_color_viridis(discrete = TRUE, option = "mako", end = .95) +
   theme_rethink()
-
+ 
 ggplotly(p)
 ```
 
