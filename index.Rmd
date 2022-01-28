@@ -19,11 +19,18 @@ library(viridis)
 library(plotly)
 
 # Load the custom rethink ggplot theme
-theme_rethink <- function() {
-  theme(
-    panel.background = element_rect(fill = "transparent"),
-    text = element_text(family = "Jost")
-  )
+theme_rethink <- function(pad_x = 0, pad_y = 0) {
+  theme_minimal() %+replace%
+    theme(
+      axis.title.y = element_text(
+        angle = 90,
+        margin = margin(t = 0, r = pad_y, b = 0, l = 0)
+      ),
+      axis.title.x = element_text(
+        margin = margin(t = pad_x, r = 0, b = 0, l = 0)
+      ),
+      text = element_text(family = "Jost")
+    )
 }
 ```
 

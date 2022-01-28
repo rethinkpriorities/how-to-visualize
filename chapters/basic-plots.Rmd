@@ -6,7 +6,7 @@
 p <- ggplot(mpg, aes(x = class, fill = class)) +
   geom_bar(alpha = .75) +
   scale_fill_viridis(discrete = TRUE, option = "mako", end = .95) +
-  theme_rethink()
+  theme_rethink(pad_y = 1)
 
 ggplotly(p, tooltip = "x")
 ```
