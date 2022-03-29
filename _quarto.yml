@@ -1,0 +1,27 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "How to Visualize"
+  author: "Rethink Priorities"
+  repo-url: https://github.com/jjallaire/hopr/
+  repo-actions: [edit, issue]
+  chapters:
+    - index.qmd
+    - chapters/best-practices.qmd
+    - chapters/basic-plots.qmd
+    - chapters/likert-plots.qmd
+    - references.qmd
+  reader-mode: true
+
+comments:
+  hypothesis: true
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+
+editor: visual

@@ -1,0 +1,35 @@
+# Best practices
+
+## `ggplot`
+
+Aim to use the `ggplot` R package for creating plots. `ggplot` is a powerful visualization package and should enable us to create the kind of plots we want to present. If we all use `ggplot`, we can write code that can be re-used by each other. It also makes it easy to write custom themes and color palettes that can be re-used, which will produce a consistency within and between projects that people are likely to appreciate.
+
+Always save the plot as an object in the environment as well as printing it where it belongs.
+
+'Piping data into the ggplot' to make the code more portable and readable. Keep steps separate.
+
+## Re-usability
+
+Ideally, we will come up with a set of functions and default options for the key sets of plots we use and like. Otherwise define sets of common options for plots in one place, and repeated ggplot elements together as a list to avoid repetition and clutter and to to allow easy 'global' adjustment.
+
+However, there are times in which too much automation makes things less flexible and increases mental overhead. We'll come to good compromises.
+
+## Labeling
+
+Use readable but concise labels. Examples of good labels are:
+
+-   "Amount donated"
+-   "GWWC" (we can assume people know what GWWC is)
+
+Examples of bad labels are:
+
+-   amt_don
+
+Coding-wise: Define and reuse lists of labels (or use inherent labeling options where these exist, to exploit existing variable and value labels.)
+
+## Anonymity
+
+We should make sure that the real data we plot is anonymous. There are several tricks we can use to assure the anonymity of the data.
+
+1.  Plot approximations of the data, rather than actual data itself. This can be done with geoms such as `geom_jitter` or the `position` argument.
+2.  Disable hover information in interactive plots.

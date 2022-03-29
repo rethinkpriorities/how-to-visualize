@@ -1,0 +1,122 @@
+---
+format:
+  html:
+    code-fold: true
+    code-tools: true
+---
+
+# Basic plots
+
+```{r}
+#| message: false
+# Load required packages
+library(tidyverse)
+library(viridis)
+```
+
+## Bar plots
+
+**Suitable data type**: Frequencies
+
+**Graph improvements**:
+
+-   Ordering in terms of frequencies
+
+-   Frequency labels
+
+There are two basic ways to construct a bar plot in `ggplot`. You can use the raw data or you can first calculate the frequencies and then plot the frequencies data.
+
+**Raw data:**
+
+```{r}
+ggplot(mpg, aes(x = fct_rev(fct_infreq(class)), fill = class)) +
+  geom_bar(alpha = .85) +
+  geom_text(
+    stat = "count", 
+    mapping = aes(label = ..count..), 
+    vjust = -0.5, 
+    color = "grey20",
+    size = 3
+  ) +
+  labs(x = "class") +
+  scale_fill_viridis(discrete = TRUE, option = "mako", end = .95) +
+  theme_minimal()
+```
+
+If you want to flip the order from high to low, remove the `fct_rev()` function from the code.
+
+**Frequencies data:**
+
+```{r}
+counts <- count(mpg, class)
+
+ggplot(counts, aes(x = reorder(class, n), y = n, fill = class)) +
+  geom_col(alpha = .85) +
+  geom_text(
+    mapping = aes(label = n), 
+    vjust = -0.5, 
+    color = "grey20",
+    size = 3
+  ) +
+  labs(x = "class", y = "count") +
+  scale_fill_viridis(discrete = TRUE, option = "mako", end = .95) +
+  theme_minimal()
+```
+
+### Stacked bar plots
+
+Stacked bar plots can be used to add additional information to a bar plot.
+
+```{r collapse=TRUE}
+head(beaver1, n = 5)
+```
+
+The following graph is a stacked bar plot.
+
+```{r}
+ggplot(mpg, aes(x = class, fill = drv)) +
+  geom_bar(alpha = .85) +
+  scale_fill_viridis(discrete = TRUE, option = "mako", end = .95) 
+```
+
+## Scatter plots
+
+### Simple scatter plot
+
+```{r}
+ggplot(mtcars, aes(x = wt, y = mpg)) +
+  geom_point(alpha = .85)
+```
+
+### Jittered scatter plot
+
+```{r}
+ggplot(mtcars, aes(x = wt, y = mpg)) +
+  geom_jitter(alpha = .85, width = 0.5, height = 0.5)
+```
+
+### Multiple scatter plot
+
+```{r}
+ggplot(mtcars, aes(x = wt, y = mpg, color = factor(cyl))) +
+  geom_point(alpha = .85) +
+  scale_color_viridis(discrete = TRUE, option = "mako", end = .95)
+```
+
+## Line plots
+
+### Simple line plot
+
+```{r}
+ggplot(economics, aes(x = date, y = unemploy)) + 
+  geom_line()
+```
+
+### Multiple lines plot
+
+```{r}
+ggplot(economics_long, aes(x = date, y = value01, 
+    color = variable)) +
+  geom_line() +
+  scale_color_viridis(discrete = TRUE, option = "mako", end = .95)
+```

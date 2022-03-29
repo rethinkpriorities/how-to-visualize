@@ -4,3 +4,5 @@
 .Ruserdata
 .DS_Store
 data_to_gitignore/*
+
+/.quarto/

@@ -1,0 +1,27 @@
+## About {.unnumbered}
+
+This is a book to organize our knowledge of data visualization and to provide examples, code, templates, and functions that can be used across various Rethink Priorities projects.
+
+There are several important goals we're hoping to achieve with this book:
+
+1.  Establish a knowledge base about how to best represent different types of data and relationships
+2.  Provide examples of code that can be adjusted and incorporated to suit common data visualization needs
+3.  Establish different color palettes that can be consistently used within and between Rethink Priorities projects
+4.  Showcase examples of functions from the `rethinkpriorities` package that relate to data visualization
+5.  Be inclusive by designing responsive and color-blind friendly graphs
+
+If you have feedback, please contact any of the people below or create an issue on the [GitHub repository](https://github.com/rethinkpriorities/how-to-visualize/issues).
+
+## Important {.unnumbered}
+
+This is a work in progress! At this point I would not even call it an alpha, so please be patient while we finalize this book!
+
+## Contributions {.unnumbered}
+
+Please add yourself to the list below to acknowledge your contributions.
+
+-   Willem Sleegers: [willem\@rethinkpriorities.org](mailto:willem@rethinkpriorities.org)
+
+-   Jamie Elsey: [jamie\@rethinkpriorities.org](mailto:jamie@rethinkpriorities.org)
+
+-   David Reinstein: [dreinstein\@rethinkpriorities.org](mailto:dreinstein@rethinkpriorities.org)
