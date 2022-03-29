@@ -27,7 +27,7 @@ Bar plots are ideal for plotting frequencies. Although it is easy to create a si
 There are two basic ways to construct a bar plot in `ggplot`. The first way is to use the raw data and have `ggplot` calculate the frequencies.
 
 ```{r}
-ggplot(mpg, aes(x = fct_rev(fct_infreq(class)), fill = class)) +
+ggplot(mpg, aes(x = fct_rev(fct_infreq(class)), fill = fct_rev(fct_infreq(class)))) +
   geom_bar(alpha = .85) +
   geom_text(
     stat = "count", 
@@ -49,7 +49,7 @@ The second way is to first calculate the frequencies yourself and then use the r
 ```{r}
 counts <- count(mpg, class)
 
-ggplot(counts, aes(x = reorder(class, n), y = n, fill = class)) +
+ggplot(counts, aes(x = reorder(class, n), y = n, fill = reorder(class, n))) +
   geom_col(alpha = .85) +
   geom_text(
     mapping = aes(label = n), 
