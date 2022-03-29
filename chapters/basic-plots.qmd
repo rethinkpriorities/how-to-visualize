@@ -37,6 +37,7 @@ ggplot(mpg, aes(x = fct_rev(fct_infreq(class)), fill = class)) +
     size = 3
   ) +
   labs(x = "class") +
+  guides(fill = "none") +
   scale_fill_viridis(discrete = TRUE, option = "mako", end = .95) +
   theme_minimal()
 ```
@@ -57,6 +58,7 @@ ggplot(counts, aes(x = reorder(class, n), y = n, fill = class)) +
     size = 3
   ) +
   labs(x = "class", y = "count") +
+  guides(fill = "none") +
   scale_fill_viridis(discrete = TRUE, option = "mako", end = .95) +
   theme_minimal()
 ```
