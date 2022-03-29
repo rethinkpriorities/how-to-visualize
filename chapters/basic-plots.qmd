@@ -67,46 +67,19 @@ ggplot(counts, aes(x = reorder(class, n), y = n, fill = class)) +
 
 Stacked bar plots can be used to add additional information to a bar plot, but they generally are difficult to interpret. It's difficult to assess the varying sizes of the stacked bar charts. Plotting Likert responses as a stacked bar char may be an exception, as long as it is accompanied by labeled percentages and rotated horizontally. See the Likert chapter for more information.
 
-Usually the better way to add additional information to a bar plot is to use facetting.
+Usually the better way to add additional information to a bar plot is to use faceting.
 
 ## Scatter plots
 
-### Simple scatter plot
+Scatter plots are useful to visualize the relationship between two numeric variables. If this is indeed the goal of the graph, it is useful to also plot a line that summarizes the relationship.
 
 ```{r}
 ggplot(mtcars, aes(x = wt, y = mpg)) +
-  geom_point(alpha = .85)
-```
-
-### Jittered scatter plot
-
-```{r}
-ggplot(mtcars, aes(x = wt, y = mpg)) +
-  geom_jitter(alpha = .85, width = 0.5, height = 0.5)
-```
-
-### Multiple scatter plot
-
-```{r}
-ggplot(mtcars, aes(x = wt, y = mpg, color = factor(cyl))) +
   geom_point(alpha = .85) +
-  scale_color_viridis(discrete = TRUE, option = "mako", end = .95)
-```
-
-## Line plots
-
-### Simple line plot
-
-```{r}
-ggplot(economics, aes(x = date, y = unemploy)) + 
-  geom_line()
-```
-
-### Multiple lines plot
-
-```{r}
-ggplot(economics_long, aes(x = date, y = value01, 
-    color = variable)) +
-  geom_line() +
-  scale_color_viridis(discrete = TRUE, option = "mako", end = .95)
+  geom_smooth(
+    method = "lm", 
+    color = mako(1, begin = .5), 
+    alpha = .25
+  ) +
+  theme_minimal()
 ```
