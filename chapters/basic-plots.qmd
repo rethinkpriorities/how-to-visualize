@@ -18,7 +18,7 @@ library(viridis)
 
 Bar plots are ideal for plotting frequencies. Although it is easy to create a simple bar plot, there are several things that can be done to improve on them:
 
--   If there are multiple categories, use a `fill` to further emphasize that the data represents different categories.
+-   If there are multiple categories, use a `fill` to further emphasize that the data represents different categories. Also think about which color to use and the ordering of the colors to best represent the data.
 
 -   Order the categories in terms of their frequency
 
@@ -27,7 +27,7 @@ Bar plots are ideal for plotting frequencies. Although it is easy to create a si
 There are two basic ways to construct a bar plot in `ggplot`. The first way is to use the raw data and have `ggplot` calculate the frequencies.
 
 ```{r}
-ggplot(mpg, aes(x = fct_rev(fct_infreq(class)), fill = fct_rev(fct_infreq(class)))) +
+ggplot(mpg, aes(x = fct_rev(fct_infreq(class)), fill = class)) +
   geom_bar(alpha = .85) +
   geom_text(
     stat = "count", 
@@ -49,7 +49,7 @@ The second way is to first calculate the frequencies yourself and then use the r
 ```{r}
 counts <- count(mpg, class)
 
-ggplot(counts, aes(x = reorder(class, n), y = n, fill = reorder(class, n))) +
+ggplot(counts, aes(x = reorder(class, n), y = n, fill = class)) +
   geom_col(alpha = .85) +
   geom_text(
     mapping = aes(label = n), 
@@ -65,19 +65,9 @@ ggplot(counts, aes(x = reorder(class, n), y = n, fill = reorder(class, n))) +
 
 ### Stacked bar plots
 
-Stacked bar plots can be used to add additional information to a bar plot.
+Stacked bar plots can be used to add additional information to a bar plot, but they generally are difficult to interpret. It's difficult to assess the varying sizes of the stacked bar charts. Plotting Likert responses as a stacked bar char may be an exception, as long as it is accompanied by labeled percentages and rotated horizontally. See the Likert chapter for more information.
 
-```{r collapse=TRUE}
-head(beaver1, n = 5)
-```
-
-The following graph is a stacked bar plot.
-
-```{r}
-ggplot(mpg, aes(x = class, fill = drv)) +
-  geom_bar(alpha = .85) +
-  scale_fill_viridis(discrete = TRUE, option = "mako", end = .95) 
-```
+Usually the better way to add additional information to a bar plot is to use facetting.
 
 ## Scatter plots
 

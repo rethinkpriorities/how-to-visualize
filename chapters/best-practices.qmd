@@ -1,6 +1,6 @@
 # Best practices
 
-## `ggplot`
+## Using `ggplot`
 
 Aim to use the `ggplot` R package for creating plots. `ggplot` is a powerful visualization package and should enable us to create the kind of plots we want to present. If we all use `ggplot`, we can write code that can be re-used by each other. It also makes it easy to write custom themes and color palettes that can be re-used, which will produce a consistency within and between projects that people are likely to appreciate.
 
@@ -26,6 +26,18 @@ Examples of bad labels are:
 -   amt_don
 
 Coding-wise: Define and reuse lists of labels (or use inherent labeling options where these exist, to exploit existing variable and value labels.)
+
+## Consistency
+
+Be consistent throughout an article or report in terms of:
+
+-   Labels
+
+-   Color scheme
+
+-   Colors matched to categories (e.g., if you match a particular color to a gender, make sure to keep using the same color to represent that gender)
+
+-   Fonts
 
 ## Anonymity
 
