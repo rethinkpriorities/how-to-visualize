@@ -5,7 +5,7 @@ project:
 book:
   title: "How to Visualize"
   author: "Rethink Priorities"
-  repo-url: https://github.com/jjallaire/hopr/
+  repo-url: https://github.com/rethinkpriorities/how-to-visualize/
   repo-actions: [edit, issue]
   chapters:
     - index.qmd

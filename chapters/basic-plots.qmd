@@ -38,7 +38,7 @@ ggplot(mpg, aes(x = fct_rev(fct_infreq(class)), fill = class)) +
   ) +
   labs(x = "class") +
   guides(fill = "none") +
-  scale_fill_viridis(discrete = TRUE, option = "mako", end = .95) +
+  scale_fill_viridis(discrete = TRUE, option = "mako", begin = .05, end = .95) +
   theme_minimal()
 ```
 
@@ -74,6 +74,8 @@ Usually the better way to add additional information to a bar plot is to use fac
 Scatter plots are useful to visualize the relationship between two numeric variables. If this is indeed the goal of the graph, it is useful to also plot a line that summarizes the relationship.
 
 ```{r}
+#| message: false
+
 ggplot(mtcars, aes(x = wt, y = mpg)) +
   geom_point(alpha = .85) +
   geom_smooth(

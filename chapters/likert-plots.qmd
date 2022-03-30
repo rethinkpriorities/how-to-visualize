@@ -1,36 +1,99 @@
+---
+format:
+  html:
+    code-fold: true
+    code-tools: true
+---
+
 # Likert plots
 
-```{r, message=FALSE, echo=FALSE}
+```{r}
+#| message: false
+
 # Load packages
-library(likert)
+library(likert) # For the MathAnxiety data set
 library(tidyverse)
 library(scales)
 library(viridis)
 library(ggrepel)
 
 # Load data
-data(pisaitems)
+data(mass)
 
-# Prepare data
-items <- pisaitems %>%
+# Prepare data by selecting some items and creating a long format
+items <- mass %>%
   as_tibble() %>%
-  select(starts_with("ST25")) %>%
+  rename(gender = Gender) %>%
   pivot_longer(
-    cols = everything(), 
+    cols = -gender, 
     names_to = "item", 
     values_to = "response"
   ) %>%
   mutate(
     response_num = as.numeric(response),
     item = dplyr::recode(item, 
-      "ST25Q01" = "magazines",
-      "ST25Q02" = "comic books",
-      "ST25Q03" = "fiction books",
-      "ST25Q04" = "non-fiction books",
-      "ST25Q05" = "newspaper"
+      "ST24Q01" = "only if I have to",
+      "ST24Q02" = "favorite hobbies",
+      "ST24Q03" = "talk about books",
+      "ST24Q04" = "hard to finish",
+      "ST24Q05" = "happy as present",
+      "ST24Q06" = "waste of time",
+      "ST24Q07" = "enjoy library",
+      "ST24Q08" = "need information",
+      "ST24Q09" = "cannot sit still",
+      "ST24Q10" = "express opinions",
+      "ST24Q11" = "exchange"
     ),
-    item = fct_reorder(item, response_num, mean, na.rm = TRUE)
+    item = fct_reorder(item, response_num)
   )
+```
+
+## Single item plot
+
+Responses to a single Likert item are best visualized with a (relatively) simple bar plot. Improvements on top of a standard bar plot can consist of plotting percentages on top of each bar and plotting the numeric Likert response options (e.g., 1 to 5) on the x-axis together with a legend that contains the response labels. This way you don't run into issues with the labels being too long to place on the x-axis and you're also explicit about how Likert responses are often treated as numeric values (rather than categorical values).
+
+```{r}
+# Filter one item from the 'items' data frame
+interesting <- filter(items, item == "I find math interesting.")
+
+# Calculate counts and proportions
+interesting_counts <- interesting %>%
+  group_by(response) %>%
+  summarize(
+    response_num = first(response_num),
+    n = n()
+  ) %>%
+  mutate(pct = n / sum(n))
+
+ggplot(interesting_counts, aes(x = response_num, y = pct, fill = response)) +
+  geom_col(alpha = .85) +
+  scale_y_continuous(labels = percent_format(accuracy = 1)) +
+  geom_text(
+    mapping = aes(label = paste0(round(pct * 100), "%")), 
+    vjust = -0.5, 
+    size = 3
+  ) +
+  labs(
+    x = '"I find math interesting."', 
+    y = "Percentage of respondents", 
+    fill = "Categories"
+  ) +
+  scale_fill_viridis(discrete = TRUE, option = "mako", begin = .05, end = .95) +
+  theme_minimal() +
+  guides(fill = guide_legend(nrow = 2)) +
+  theme(legend.position = "bottom")
+```
+
+## Multiple items plots
+
+Plotting multiple Likert items is more difficult. If there are too many items, it becomes too messy to plot a bar plot for each item. Stacked bar charts are more efficient but they are difficult to interpret. To improve that interpretability, it helps to put labels on each segment of the stacked bar chart, flip the bars horizontally, and align the bars so it is easier to see where most responses lie. These are called diverging stacked bar plots. There are several packages that make this relatively straightforward to do, such as the [`likert`](https://github.com/jbryer/likert "likert R package") and [`HH`](https://cran.r-project.org/web/packages/HH/index.html "HH R package") packages, although it also possible to do it in `ggplot` with the following code.
+
+```{r}
+#| message: false
+#| fig-width: 10
+#| fig-height: 10
+#| fig-align: center
+#| column: page
 
 # Calculate counts and proportions
 counts <- items %>% 
@@ -43,145 +106,57 @@ counts <- items %>%
   mutate(pct = n / sum(n)) %>%
   ungroup()
 
-# Filter one item from the 'items' data frame
-magazines <- filter(items, item == "magazines" & !is.na(response))
+# Divide the proportion of the neutral category by half
+counts <- mutate(counts, 
+  pct_half = if_else(response_num == 3, pct / 2, pct)
+)
 
-# Calculate counts and proportions
-magazines_counts <- magazines %>%
-  group_by(response) %>%
-  summarize(
-    response_num = first(response_num),
-    n = n()
-  ) %>%
-  mutate(pct = n / sum(n))
-```
-
-## Single item plot
-
-```{r}
-ggplot(magazines_counts, aes(x = response_num, y = pct, fill = response)) +
-  geom_col(alpha = .8) +
-  scale_y_continuous(labels = percent_format(accuracy = 1)) +
-  geom_text(
-    mapping = aes(label = paste0(round(pct * 100), "%")), 
-    vjust = -0.5, 
-    size = 3
-  ) +
-  labs(
-    x = "Frequency reading magazines", 
-    y = "Percentage of respondents", 
-    fill = "Categories"
-  ) +
-  scale_fill_viridis(discrete = TRUE, option = "mako", begin = .1, end = .9) +
-  theme_minimal() +
-  guides(fill = guide_legend(nrow = 2)) +
-  theme(legend.position = "bottom")
-```
-
-## Multiple items plots
-
-```{r}
-ggplot(counts, aes(
-      x = item,
-      y = pct,
-      fill = reorder(response, desc(response))
-    )
-  ) +
-  geom_col(alpha = .8) +
-  coord_flip() +
-  geom_text(
-    mapping = aes(label = paste0(round(pct * 100), "%")),
-    position = position_stack(vjust = 0.5),
-    size = 3
-  ) +
-  scale_fill_viridis(
-    discrete = TRUE,
-    option = "mako",
-    direction = -1,
-    begin = .1,
-    end = .9
-  ) +
-  scale_y_continuous(labels = percent_format(accuracy = 1)) +
-  labs(
-    x = "",
-    y = "",
-    color = "Rating",
-    fill = "Rating"
-  ) +
-  theme_minimal() +
-  guides(fill = guide_legend(nrow = 2)) +
-  theme(legend.position = "bottom")
-```
-
-```{r, message=FALSE}
-# Calculate halves of the neutral category
-counts_split <- counts %>% 
-  filter(response_num == 3) %>% 
-  mutate(pct = pct / 2) 
-
-# Replace old neutral-category
-new_counts <- filter(counts, response_num != 3)
-new_counts <- full_join(new_counts, counts_split) %>%
-  arrange(item, response_num)
-
-# Separate the data frames
-new_counts1 <- filter(new_counts, response_num %in% 1:3) 
-new_counts2 <- filter(new_counts, response_num %in% 3:5) 
+# Separate the data frames into one for each half
+counts_left <- filter(counts, response_num %in% 1:3) 
+counts_right <- filter(counts, response_num %in% 3:5) 
 
 # Create a colors vector
-colors <- mako(n = 5, begin = .1, end = .9)
+colors <- mako(n = 5, begin = .05, end = .95)
 names(colors) <- levels(counts$response)
 
-# Plot  
-p <- ggplot() +
+# Calculate label positions
+labels <- counts %>%
+  group_by(item) %>%
+  mutate(
+    bottom_half = sum(if_else(response_num < 4, pct_half, 0)),
+    pos = cumsum(pct) - (pct / 2) - bottom_half
+  )
+
+# Create the plot
+ggplot() +
   geom_col(
-    data = new_counts1, 
-    mapping = aes(x = item, y = -pct, fill = response), 
-    alpha = .8
+    data = counts_left,
+    mapping = aes(x = item, y = -pct_half, fill = response), 
+    alpha = .85,
+    width = .5,
   ) +
   geom_col(
-    data = new_counts2, 
-    mapping = aes(x = item, y = pct, fill = response), 
+    data = counts_right, 
+    mapping = aes(x = item, y = pct_half, fill = response), 
     position = position_stack(reverse = TRUE),
-    alpha = .8
+    alpha = .85,
+    width = .5
+  ) +
+  geom_text(
+    data = labels, 
+    mapping = aes(
+      x = item, 
+      y = pos, 
+      label = paste0(round(pct * 100), "%"),
+    ),
+    position = position_nudge(x = 0.375),
+    size = 3,
   ) +
   coord_flip() +
   scale_y_continuous(labels = percent_format(accuracy = 1)) +
   scale_fill_manual(values = colors) +
   labs(x = "", y = "", fill = "Category:") +
+  guides(fill = guide_legend(nrow = 2), color = "none") +
   theme_minimal() +
-  guides(fill = guide_legend(nrow = 2)) +
   theme(legend.position = "bottom")
-
-p 
 ```
-
-```{r}
-# Create labels
-labels <- counts %>%
-  group_by(item) %>%
-  mutate(
-    temp = case_when(
-      response_num == 3 ~ pct / 2,
-      response_num < 4 ~ pct,
-      TRUE ~ 0),
-    bottom_half = sum(temp),
-    pos = cumsum(pct) - (pct / 2) - bottom_half
-  )
-
-p + geom_text(
-  data = labels, 
-  mapping = aes(
-    x = item, 
-    y = pos, 
-    label = paste0(round(pct * 100), "%")
-  ),
-  size = 3
-)
-```
-
-## To do
-
-The combination of stacked bar charts and overlayed error/CI bars for some 'middle split' seems informative:
-
-See [here](https://rethinkpriorities.github.io/ea_data_public/eas-engagement.html#summary-charts) for an example of a summary chart.
