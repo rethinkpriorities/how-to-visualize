@@ -24,15 +24,15 @@ Bar plots are ideal for plotting frequencies. Although it is easy to create a si
 
 -   Add frequency labels to make it easier to see the exact frequencies
 
-There are two basic ways to construct a bar plot in `ggplot`. The first way is to use the raw data and have `ggplot` calculate the frequencies.
+There are two basic ways to construct a bar plot in `ggplot`. The first way is to use the raw data and have `ggplot` calculate the frequencies.^[Testing a footnote here.]
 
 ```{r}
 ggplot(mpg, aes(x = fct_rev(fct_infreq(class)), fill = class)) +
   geom_bar(alpha = .85) +
   geom_text(
-    stat = "count", 
-    mapping = aes(label = ..count..), 
-    vjust = -0.5, 
+    stat = "count",
+    mapping = aes(label = ..count..),
+    vjust = -0.5,
     color = "grey20",
     size = 3
   ) +
@@ -52,8 +52,8 @@ counts <- count(mpg, class)
 ggplot(counts, aes(x = reorder(class, n), y = n, fill = class)) +
   geom_col(alpha = .85) +
   geom_text(
-    mapping = aes(label = n), 
-    vjust = -0.5, 
+    mapping = aes(label = n),
+    vjust = -0.5,
     color = "grey20",
     size = 3
   ) +
@@ -79,8 +79,8 @@ Scatter plots are useful to visualize the relationship between two numeric varia
 ggplot(mtcars, aes(x = wt, y = mpg)) +
   geom_point(alpha = .85) +
   geom_smooth(
-    method = "lm", 
-    color = mako(1, begin = .5), 
+    method = "lm",
+    color = mako(1, begin = .5),
     alpha = .25
   ) +
   theme_minimal()
