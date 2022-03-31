@@ -7,7 +7,7 @@ book:
   author: "Rethink Priorities"
   repo-url: https://github.com/rethinkpriorities/how-to-visualize/
   repo-actions: [edit, issue]
-  date: "`r Sys.Date()`"
+  date: today
   chapters:
     - index.qmd
     - chapters/best-practices.qmd
