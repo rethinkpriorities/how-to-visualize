@@ -23,9 +23,7 @@ bibliography: references.bib
 
 format:
   html:
-    code-fold: true
     code-link: true #note: this isn't working for me
-    code-tools: true
     theme: cosmo
     citations-hover: true
     footnotes-hover: true
