@@ -23,8 +23,8 @@ bibliography: references.bib
 
 format:
   html:
-    code-link: true #note: this isn't working for me
     theme: cosmo
+    code-link: true
     citations-hover: true
     footnotes-hover: true
 

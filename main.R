@@ -1,11 +1,9 @@
-# one R file to do everything ####
+# One R file to do everything
 
-# Setup ####
-#bring in data, packages, etc, whatever else you want to do here
+# Setup -------------------------------------------------------------------
 
-library(pacman)
-p_load(downlit)
+# Bring in data, packages, etc, whatever else you want to do here
 
-# render the book #### 
-system("quarto render")
+# Render book -------------------------------------------------------------
 
+quarto::quarto_render()
