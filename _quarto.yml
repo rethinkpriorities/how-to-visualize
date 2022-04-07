@@ -5,6 +5,9 @@ project:
 book:
   title: "How to Visualize"
   author: "Rethink Priorities"
+  execute:
+    warning: false
+    message: false
   repo-url: https://github.com/rethinkpriorities/how-to-visualize/
   repo-actions: [edit, issue]
   date: today
