@@ -24,7 +24,9 @@ Bar plots are ideal for plotting frequencies. Although it is easy to create a si
 
 -   Add frequency labels to make it easier to see the exact frequencies
 
-There are two basic ways to construct a bar plot in `ggplot`. The first way is to use the raw data and have `ggplot` calculate the frequencies.^[Testing a footnote here.]
+There are two basic ways to construct a bar plot in `ggplot`. The first way is to use the raw data and have `ggplot` calculate the frequencies.[^basic-plots-1]
+
+[^basic-plots-1]: Testing a footnote here.
 
 ```{r}
 ggplot(mpg, aes(x = fct_rev(fct_infreq(class)), fill = class)) +
