@@ -24,9 +24,7 @@ Bar plots are ideal for plotting frequencies. Although it is easy to create a si
 
 -   Add frequency labels to make it easier to see the exact frequencies
 
-There are two basic ways to construct a bar plot in `ggplot`. The first way is to use the raw data and have `ggplot` calculate the frequencies.[^basic-plots-1]
-
-[^basic-plots-1]: Testing a footnote here.
+There are two basic ways to construct a bar plot in `ggplot`. The first way is to use the raw data and have `ggplot` calculate the frequencies.
 
 ```{r}
 ggplot(mpg, aes(x = fct_rev(fct_infreq(class)), fill = class)) +
@@ -61,6 +59,56 @@ ggplot(counts, aes(x = reorder(class, n), y = n, fill = class)) +
   ) +
   labs(x = "class", y = "count") +
   guides(fill = "none") +
+  scale_fill_viridis(discrete = TRUE, option = "mako", end = .95) +
+  theme_minimal()
+```
+
+### Percentages
+
+If you want to plot percentages instead, you can use the same two techniques as before: 1) have `ggplot` calculate the percentages of 2) do it yourself first.
+
+If you want to have `ggplot` calculate a percentage, you can use `..count../sum(..count..)`.
+
+```{r}
+ggplot(mpg, aes(x = fct_rev(fct_infreq(class)), fill = class)) +
+  geom_bar(aes(y = ..count../sum(..count..)), alpha = .85) +
+  geom_text(
+    mapping = aes(
+      label = scales::percent(..count../sum(..count..)),
+      y = ..count../sum(..count..)), 
+    stat = "count", 
+    vjust = -.5,
+    color = "grey20"
+  ) +
+  labs(x = "class") +
+  guides(fill = "none") +
+  scale_fill_viridis(
+    discrete = TRUE, 
+    option = "mako", 
+    begin = .05, 
+    end = .95
+  ) +
+  theme_minimal()
+```
+
+Alternatively, you calculate the percentages yourself first.
+
+```{r}
+counts <- mpg %>%
+  count(class) %>%
+  mutate(pct = n / sum(n))
+
+ggplot(counts, aes(x = reorder(class, n), y = pct, fill = class)) +
+  geom_col(alpha = .85) +
+  geom_text(
+    mapping = aes(label = scales::percent(pct)),
+    vjust = -0.5,
+    color = "grey20",
+    size = 3
+  ) +
+  labs(x = "class", y = "count") +
+  guides(fill = "none") +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
   scale_fill_viridis(discrete = TRUE, option = "mako", end = .95) +
   theme_minimal()
 ```
