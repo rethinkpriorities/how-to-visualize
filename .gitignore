@@ -6,3 +6,5 @@
 data_to_gitignore/*
 
 /.quarto/
+
+/_*.local

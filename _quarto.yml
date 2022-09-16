@@ -5,9 +5,6 @@ project:
 book:
   title: "How to Visualize"
   author: "Rethink Priorities"
-  execute:
-    warning: false
-    message: false
   repo-url: https://github.com/rethinkpriorities/how-to-visualize/
   repo-actions: [edit, issue]
   date: today
@@ -16,6 +13,7 @@ book:
     - chapters/best-practices.qmd
     - chapters/basic-plots.qmd
     - chapters/likert-plots.qmd
+    - chapters/labels.qmd
     - references.qmd
   reader-mode: true
 
@@ -32,3 +30,4 @@ format:
     footnotes-hover: true
 
 editor: visual
+freeze: true

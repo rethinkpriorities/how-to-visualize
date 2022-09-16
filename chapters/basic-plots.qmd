@@ -65,7 +65,7 @@ ggplot(counts, aes(x = reorder(class, n), y = n, fill = class)) +
 
 ### Percentages
 
-If you want to plot percentages instead, you can use the same two techniques as before: 1) have `ggplot` calculate the percentages of 2) do it yourself first.
+If you want to plot percentages instead, you can use the same two techniques as before: 1) have `ggplot` calculate the percentages or 2) do it yourself first.
 
 If you want to have `ggplot` calculate a percentage, you can use `..count../sum(..count..)`.
 

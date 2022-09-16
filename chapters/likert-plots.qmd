@@ -50,7 +50,7 @@ items <- mass %>%
 
 ## Single item plot
 
-Responses to a single Likert item are best visualized with a (relatively) simple bar plot. Improvements on top of a standard bar plot can consist of plotting percentages on top of each bar and plotting the numeric Likert response options (e.g., 1 to 5) on the x-axis together with a legend that contains the response labels. This way you don't run into issues with the labels being too long to place on the x-axis and you're also explicit about how Likert responses are often treated as numeric values (rather than categorical values).
+Responses to a single Likert item are best visualized with a (relatively) simple bar plot. Improvements to a standard bar plot can consist of plotting percentages on top of each bar and plotting the numeric Likert response options (e.g., 1 to 5) on the x-axis together with a legend that contains the response labels. This way you don't run into issues with the labels being too long to place on the x-axis and you're also explicit about how Likert responses are often treated as numeric values (rather than categorical values).
 
 ```{r}
 # Filter one item from the 'items' data frame
