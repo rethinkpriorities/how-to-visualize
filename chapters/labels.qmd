@@ -13,10 +13,33 @@ format:
 
 # Load required packages
 library(tidyverse)
-library(viridis)
+library(scales)
 ```
 
 Sometimes you want to add labels to a plot. This could be to make it clear to which group a geom belongs to or perhaps to also plot the numeric values so it is clear what the exact values are. This is not always easy to do, so in this chapter we show some basic plots with labels and more advanced techniques.
+
+## Long labels
+
+Sometimes you have very long labels (e.g., factor levels) that overlap each other when you plot them in a graph. One way to solve this is by using the `label_wrap()` function from the `scales` package.
+
+```{r}
+#| label: long-labels
+
+data <- tibble(
+  x = c(
+    "this is a long label that's pretty long",
+    "this is another long label that's pretty long, longer even",
+    "this is another long label that's so long that you might
+      wonder why it is on the x-axis"
+  ),
+  y = 1:3
+)
+
+ggplot(data, aes(x = x, y = y)) +
+  geom_col() +
+  scale_x_discrete(labels = label_wrap(40)) +
+  theme_minimal()
+```
 
 ## Labels next to the plot
 
