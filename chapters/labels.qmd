@@ -1,10 +1,7 @@
 ---
 title: "Plotting labels"
-editor: visual
-format:
-  html:
-    code-fold: true
-    code-tools: true
+code-fold: true
+code-tools: true
 ---
 
 ```{r}
@@ -24,7 +21,6 @@ Sometimes you have very long labels (e.g., factor levels) that overlap each othe
 
 ```{r}
 #| label: long-labels
-
 data <- tibble(
   x = c(
     "this is a long label that's pretty long",
@@ -46,6 +42,7 @@ ggplot(data, aes(x = x, y = y)) +
 If you want to label, for example, every bar plot, but the height of the bar could cover the entire range of the plot area, then you may want to put labels next to the plot. This is tricky to do, but below is sort of a hacky solution to get it done. The trick is to add a rectangle to the plot and position it where you want the labels to go. Since this will be outside of the grid area of the plot, we have to specify the limits of the plotting area (see `scale_x_continuous()` in the code below). Optionally you can reduce the default spacing between the plots by setting `mult` to `c(0, 0)`.
 
 ```{r}
+#| label: labels-next-to-plot
 data <- tibble(
   x = rep(c(.5, .25, .05, -.05, -.25, -.5), 4),
   y = rep(c("a", "b", "c", "d", "e", "f"), 4),

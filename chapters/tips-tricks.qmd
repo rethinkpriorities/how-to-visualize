@@ -3,3 +3,26 @@ title: "More tips and tricks"
 code-fold: true
 code-tools: true
 ---
+
+```{r}
+#| label: setup
+#| message: false
+
+# Load required packages
+library(tidyverse)
+```
+
+This chapter is about a few random things that may come in handy when creating plots. There are a few things that you probably always have to Google to remind yourself how to do it. This chapter is about those kinds of things.
+
+## Removing the legend
+
+You can remove the legend by using the `guides()` element. Simply set the aesthetic that you don't want a legend of to `"none"`.
+
+```{r}
+#| label: remove-legend-1
+data <- tibble(x = 1:5, y = 1:5)
+ggplot(data, aes(x, y, fill = factor(x))) +
+  geom_col() +
+  guides(fill = "none") +
+  theme_minimal()
+```

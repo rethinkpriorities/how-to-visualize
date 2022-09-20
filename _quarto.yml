@@ -14,6 +14,7 @@ book:
     - chapters/basic-plots.qmd
     - chapters/likert-plots.qmd
     - chapters/labels.qmd
+    - chapters/tips-tricks.qmd
     - references.qmd
   reader-mode: true
 
