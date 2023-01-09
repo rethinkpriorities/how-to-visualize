@@ -19,7 +19,7 @@ book:
   reader-mode: true
 
 comments:
-  hypothesis: true
+  hypothesis: false
 
 bibliography: references.bib
 

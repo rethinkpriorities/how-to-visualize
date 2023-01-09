@@ -12,6 +12,7 @@ format:
 # Load required packages
 library(tidyverse)
 library(viridis)
+library(scales)
 ```
 
 ## Bar plots
@@ -31,14 +32,19 @@ ggplot(mpg, aes(x = fct_rev(fct_infreq(class)), fill = class)) +
   geom_bar(alpha = .85) +
   geom_text(
     stat = "count",
-    mapping = aes(label = ..count..),
+    mapping = aes(label = after_stat(count)),
     vjust = -0.5,
     color = "grey20",
     size = 3
   ) +
   labs(x = "class") +
   guides(fill = "none") +
-  scale_fill_viridis(discrete = TRUE, option = "mako", begin = .05, end = .95) +
+  scale_fill_viridis(
+    discrete = TRUE,
+    option = "mako", 
+    begin = .05, 
+    end = .95
+  ) +
   theme_minimal()
 ```
 
@@ -71,11 +77,12 @@ If you want to have `ggplot` calculate a percentage, you can use `..count../sum(
 
 ```{r}
 ggplot(mpg, aes(x = fct_rev(fct_infreq(class)), fill = class)) +
-  geom_bar(aes(y = ..count../sum(..count..)), alpha = .85) +
+  geom_bar(aes(y = after_stat(count/sum(count))), alpha = .85) +
   geom_text(
     mapping = aes(
-      label = scales::percent(..count../sum(..count..)),
-      y = ..count../sum(..count..)), 
+      label = percent(after_stat(count/sum(count))),
+      y = after_stat(count/sum(count))
+    ), 
     stat = "count", 
     vjust = -.5,
     color = "grey20"
@@ -101,7 +108,7 @@ counts <- mpg %>%
 ggplot(counts, aes(x = reorder(class, n), y = pct, fill = class)) +
   geom_col(alpha = .85) +
   geom_text(
-    mapping = aes(label = scales::percent(pct)),
+    mapping = aes(label = percent(pct)),
     vjust = -0.5,
     color = "grey20",
     size = 3
@@ -112,6 +119,8 @@ ggplot(counts, aes(x = reorder(class, n), y = pct, fill = class)) +
   scale_fill_viridis(discrete = TRUE, option = "mako", end = .95) +
   theme_minimal()
 ```
+
+The code of this latter approach seems to be a lot simpler, so could be recommended on that basis.
 
 ### Stacked bar plots
 
@@ -127,11 +136,11 @@ Scatter plots are useful to visualize the relationship between two numeric varia
 #| message: false
 
 ggplot(mtcars, aes(x = wt, y = mpg)) +
-  geom_point(alpha = .85) +
+  geom_point(alpha = .5) +
   geom_smooth(
     method = "lm",
-    color = mako(1, begin = .5),
-    alpha = .25
+    alpha = .25,
+    color = "black"
   ) +
   theme_minimal()
 ```
