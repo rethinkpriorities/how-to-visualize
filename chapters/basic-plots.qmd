@@ -115,7 +115,7 @@ ggplot(counts, aes(x = reorder(class, n), y = pct, fill = class)) +
   ) +
   labs(x = "class", y = "count") +
   guides(fill = "none") +
-  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  scale_y_continuous(labels = percent_format(accuracy = 1)) +
   scale_fill_viridis(discrete = TRUE, option = "mako", end = .95) +
   theme_minimal()
 ```
