@@ -15,6 +15,24 @@ library(scales)
 
 Sometimes you want to add labels to a plot. This could be to make it clear to which group a geom belongs to or perhaps to also plot the numeric values so it is clear what the exact values are. This is not always easy to do, so in this chapter we show some basic plots with labels and more advanced techniques.
 
+## Labels on top of geoms
+
+A common usecase for labels is to put them on top of a geom, like a bar geom. You can do this with `geom_text()`, which by default positions the text at the same height as the bar, which is not ideal. Instead, you can adjust its position using `vjust`.
+
+```{r}
+#| label: geom-labels
+data <- tibble(
+  x = c("A", "B", "C"),
+  y = 1:3
+)
+
+ggplot(data, aes(x = x, y = y)) +
+  geom_col() +
+  geom_text(aes(label = y), vjust = unit(-1, "lines")) +
+  coord_cartesian(ylim = c(0, 3.5)) +
+  theme_minimal()
+```
+
 ## Long labels
 
 Sometimes you have very long labels (e.g., factor levels) that overlap each other when you plot them in a graph. One way to solve this is by using the `label_wrap()` function from the `scales` package.
@@ -51,20 +69,21 @@ data <- tibble(
 
 ggplot(data, aes(x = x, y = y)) +
   geom_col() +
-  facet_wrap(~ facet) +
+  facet_wrap(~facet) +
   geom_rect(
-    aes(xmin = 1, xmax = Inf, ymin = -Inf, ymax = Inf), 
+    aes(xmin = 1, xmax = Inf, ymin = -Inf, ymax = Inf),
     fill = "white"
   ) +
   geom_text(
-    aes(x = 1.125, y = y, label = format(round(x, 2), nsmall = 2)), 
+    aes(x = 1.125, y = y, label = format(round(x, 2), nsmall = 2)),
     size = 3,
     alpha = .8,
     hjust = .5
   ) +
   scale_x_continuous(
-    limits = c(-1, 1.25), 
+    limits = c(-1, 1.25),
     expand = expansion(mult = c(0, 0))
   ) +
   theme_minimal()
 ```
+
