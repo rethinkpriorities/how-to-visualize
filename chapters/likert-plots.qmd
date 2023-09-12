@@ -10,7 +10,6 @@ format:
 ```{r}
 #| label: setup
 #| message: false
-
 library(likert) # For the MathAnxiety data set
 library(tidyverse)
 library(scales)
@@ -25,13 +24,13 @@ items <- mass %>%
   as_tibble() %>%
   rename(gender = Gender) %>%
   pivot_longer(
-    cols = -gender, 
-    names_to = "item", 
+    cols = -gender,
+    names_to = "item",
     values_to = "response"
   ) %>%
   mutate(
     response_num = as.numeric(response),
-    item = dplyr::recode(item, 
+    item = dplyr::recode(item,
       "ST24Q01" = "only if I have to",
       "ST24Q02" = "favorite hobbies",
       "ST24Q03" = "talk about books",
@@ -71,13 +70,13 @@ ggplot(interesting_props, aes(x = response, y = pct, fill = response)) +
   geom_col(alpha = .85) +
   scale_y_continuous(labels = percent_format(accuracy = 1)) +
   geom_text(
-    mapping = aes(label = paste0(round(pct * 100), "%")), 
-    vjust = -0.5, 
+    mapping = aes(label = paste0(round(pct * 100), "%")),
+    vjust = -0.5,
     size = 3
   ) +
   labs(
-    x = '"I find math interesting."', 
-    y = "Percentage of respondents", 
+    x = '"I find math interesting."',
+    y = "Percentage of respondents",
     fill = "Categories"
   ) +
   scale_fill_manual(values = colors) +
@@ -93,25 +92,24 @@ Plotting multiple Likert items is more difficult. If there are too many items, i
 #| message: false
 #| fig-height: 10
 #| fig-align: center
-item_props <- items %>% 
+item_props <- items %>%
   filter(!is.na(response)) %>%
   count(item, response, response_num) %>%
   group_by(item) %>%
   mutate(pct = n / sum(n)) %>%
   ungroup()
 
-ggplot(item_props, aes(x = item, y = pct, fill = response)) +
-  geom_col(position = "likert", alpha = .85, width = .5) +
+ggplot(item_props, aes(y = item, x = pct, fill = response)) +
+  geom_col(position = "likert", alpha = .85) +
   geom_text(
     aes(label = paste0(round(pct * 100), "%")),
-    position = position_likert(nudge = .4),
+    position = position_likert(),
     size = 3,
   ) +
-  coord_flip() +
-  scale_x_discrete(labels = wrap_format(20)) +
-  scale_y_continuous(labels = percent_format(accuracy = 1)) +
+  scale_x_continuous(labels = percent_format(accuracy = 1)) +
+  scale_y_discrete(labels = wrap_format(20)) +
   scale_fill_manual(values = colors) +
   labs(x = "", y = "", fill = "Category:") +
   guides(fill = guide_legend(nrow = 2), color = "none") +
-  theme(legend.position = "top")
+  theme(legend.position = "bottom")
 ```

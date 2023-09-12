@@ -7,8 +7,6 @@ code-tools: true
 ```{r}
 #| label: setup
 #| message: false
-
-# Load required packages
 library(tidyverse)
 library(scales)
 ```
@@ -17,7 +15,7 @@ Sometimes you want to add labels to a plot. This could be to make it clear to wh
 
 ## Labels on top of geoms
 
-A common usecase for labels is to put them on top of a geom, like a bar geom. You can do this with `geom_text()`, which by default positions the text at the same height as the bar, which is not ideal. Instead, you can adjust its position using `vjust`.
+A common use case for labels is to put them on top of a geom, like a bar geom. You can do this with `geom_text()`, which by default positions the text at the same height as the bar, which is not ideal. Instead, you can adjust its position using `nudge_x` and `nudge_y`. Note that this is the same as using `position_nudge()`.
 
 ```{r}
 #| label: geom-labels
@@ -28,7 +26,7 @@ data <- tibble(
 
 ggplot(data, aes(x = x, y = y)) +
   geom_col() +
-  geom_text(aes(label = y), vjust = unit(-1, "lines")) +
+  geom_text(aes(label = y), nudge_y = 0.1) +
   coord_cartesian(ylim = c(0, 3.5)) +
   theme_minimal()
 ```
@@ -71,19 +69,35 @@ ggplot(data, aes(x = x, y = y)) +
   geom_col() +
   facet_wrap(~facet) +
   geom_rect(
-    aes(xmin = 1, xmax = Inf, ymin = -Inf, ymax = Inf),
+    aes(xmin = 0.575, xmax = Inf, ymin = -Inf, ymax = Inf),
     fill = "white"
   ) +
   geom_text(
-    aes(x = 1.125, y = y, label = format(round(x, 2), nsmall = 2)),
+    aes(x = 0.7, y = y, label = format(round(x, 2), nsmall = 2)),
     size = 3,
     alpha = .8,
-    hjust = .5
-  ) +
-  scale_x_continuous(
-    limits = c(-1, 1.25),
-    expand = expansion(mult = c(0, 0))
+    hjust = 1
   ) +
   theme_minimal()
 ```
 
+Alternatively, you can use the patchwork package to create multiple plots and position them side-by-side. So you could make a plot containing the bars and another plot that contains the numbers. A downside of this method is that you cannot easily extend this to facetted plots.
+
+```{r}
+#| label: labels-next-to-plot-solution-2
+library(patchwork)
+
+data <- tibble(
+  x = c(.5, .25, .05, -.05, -.25, -.5),
+  y = c("a", "b", "c", "d", "e", "f")
+)
+
+a <- ggplot(data, aes(x = x, y = y)) +
+  geom_col()
+
+b <- ggplot(data, aes(x = x, y = y)) +
+  geom_text(aes(x = 0, label = x), color = "gray20") +
+  theme_void()
+
+a + b + plot_layout(widths = c(9, 1))
+```
