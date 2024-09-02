@@ -1,0 +1,3 @@
+# Advanced plots
+
+This section covers advanced plots.

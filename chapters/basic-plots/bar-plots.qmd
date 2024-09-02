@@ -1,27 +1,61 @@
-# Fixed sizes
+---
+fig-format: svg
+---
+
+# Bar plots
+
+## Setup
 
 ```{r}
+#| label: setup
 #| message: false
-# Load required packages
 library(tidyverse)
-library(viridis)
 library(scales)
+
+lighter_blue <- "#BFE7F4"
+light_blue <- "#7ED2F1"
+blue <- "#327291"
+yellow <- "#FBB21D"
+dark_gray <- "#303A40"
+gray <- "#464D53"
+
+theme_set(theme_minimal(base_size = 17))
+update_geom_defaults("bar", aes(fill = blue))
+update_geom_defaults("text", aes(color = "gray20"))
+update_geom_defaults("label", aes(color = "gray20"))
 ```
 
-## Bar widths
+## Frequencies
+
+Bar plots are ideal for plotting frequencies. Although it is easy to create a simple bar plot, there are several things that can be done to improve on them:
+
+-   Order the categories in terms of their frequency
+-   Add frequency labels to make it easier to see the exact frequencies
+
+There are two basic ways to construct a bar plot in `ggplot`. The first way is to use the raw data and have `ggplot` calculate the frequencies.
 
 ```{r}
-ggplot(mpg, aes(x = fct_rev(fct_infreq(class)), fill = class)) +
-  geom_bar(alpha = .85, width = 1) +
+#| label: bar-plot-after-stat-counts
+#| fig-cap: Bar plot with counts calculated by ggplot2
+#| fig-width: 8
+ggplot(mpg, aes(x = fct_rev(fct_infreq(class)))) +
+  geom_bar() +
+  geom_label(
+    stat = "count",
+    mapping = aes(label = after_stat(count)),
+    vjust = 1,
+    color = "white",
+    fill = "transparent",
+    label.size = NA,
+    label.padding = unit(0.5, "lines")
+  ) +
   labs(x = "class") +
   guides(fill = "none") +
-  scale_fill_viridis(
-    discrete = TRUE,
-    option = "mako",
-    begin = .05,
-    end = .95
-  ) +
-  theme_minimal()
+  labs(x = "test") +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
+  theme(
+    panel.grid.major.x = element_blank()
+  )
 ```
 
 If you want to flip the order from high to low, remove the `fct_rev()` function from the code.
@@ -41,7 +75,6 @@ ggplot(counts, aes(x = reorder(class, n), y = n, fill = class)) +
   ) +
   labs(x = "class", y = "count") +
   guides(fill = "none") +
-  scale_fill_viridis(discrete = TRUE, option = "mako", end = .95) +
   theme_minimal()
 ```
 
@@ -65,12 +98,6 @@ ggplot(mpg, aes(x = fct_rev(fct_infreq(class)), fill = class)) +
   ) +
   labs(x = "class") +
   guides(fill = "none") +
-  scale_fill_viridis(
-    discrete = TRUE,
-    option = "mako",
-    begin = .05,
-    end = .95
-  ) +
   theme_minimal()
 ```
 
@@ -92,7 +119,6 @@ ggplot(counts, aes(x = reorder(class, n), y = pct, fill = class)) +
   labs(x = "class", y = "count") +
   guides(fill = "none") +
   scale_y_continuous(labels = percent_format(accuracy = 1)) +
-  scale_fill_viridis(discrete = TRUE, option = "mako", end = .95) +
   theme_minimal()
 ```
 
@@ -103,20 +129,3 @@ The code of this latter approach seems to be a lot simpler, so could be recommen
 Stacked bar plots can be used to add additional information to a bar plot, but they generally are difficult to interpret. It's difficult to assess the varying sizes of the stacked bar charts. Plotting Likert responses as a stacked bar char may be an exception, as long as it is accompanied by labeled percentages and rotated horizontally. See the Likert chapter for more information.
 
 Usually the better way to add additional information to a bar plot is to use faceting.
-
-## Scatter plots
-
-Scatter plots are useful to visualize the relationship between two numeric variables. If this is indeed the goal of the graph, it is useful to also plot a line that summarizes the relationship.
-
-```{r}
-#| message: false
-
-ggplot(mtcars, aes(x = wt, y = mpg)) +
-  geom_point(alpha = .5) +
-  geom_smooth(
-    method = "lm",
-    alpha = .25,
-    color = "black"
-  ) +
-  theme_minimal()
-```

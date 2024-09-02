@@ -15,13 +15,3 @@ If you have feedback, please contact any of the people below or create an issue 
 ## Important {.unnumbered}
 
 This is a work in progress! At this point I would not even call it an alpha, so please be patient while we finalize this book!
-
-## Contributions {.unnumbered}
-
-Please add yourself to the list below to acknowledge your contributions.
-
--   Willem Sleegers: [willem\@rethinkpriorities.org](mailto:willem@rethinkpriorities.org)
-
--   Jamie Elsey: [jamie\@rethinkpriorities.org](mailto:jamie@rethinkpriorities.org)
-
--   David Reinstein: [dreinstein\@rethinkpriorities.org](mailto:dreinstein@rethinkpriorities.org)

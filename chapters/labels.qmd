@@ -1,9 +1,3 @@
----
-title: "Plotting labels"
-code-fold: true
-code-tools: true
----
-
 ```{r}
 #| label: setup
 #| message: false

@@ -1,8 +1,4 @@
----
-title: "More tips and tricks"
-code-fold: true
-code-tools: true
----
+# Tips and tricks
 
 ```{r}
 #| label: setup

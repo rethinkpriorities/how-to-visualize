@@ -11,24 +11,27 @@ book:
   chapters:
     - index.qmd
     - chapters/best-practices.qmd
-    - chapters/basic-plots.qmd
-    - chapters/likert-plots.qmd
+    - part: chapters/basic-plots.qmd
+      chapters:
+        - chapters/basic-plots/bar-plots.qmd
+        - chapters/basic-plots/scatter-plots.qmd
+    - part: chapters/advanced-plots.qmd
+      chapters:
+        - chapters/advanced-plots/likert-plots.qmd
     - chapters/labels.qmd
     - chapters/tips-tricks.qmd
-    - references.qmd
   reader-mode: true
 
 comments:
   hypothesis: false
 
-bibliography: references.bib
-
 format:
   html:
-    theme: cosmo
+    code-fold: true
     code-link: true
     citations-hover: true
     footnotes-hover: true
+    fig-format: svg
 
 editor: visual
 freeze: true

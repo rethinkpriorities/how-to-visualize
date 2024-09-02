@@ -1,0 +1,22 @@
+
+# Scatter plots
+
+```{r}
+#| message: false
+library(tidyverse)
+library(scales)
+```
+
+Scatter plots are useful to visualize the relationship between two numeric variables. If this is indeed the goal of the graph, it is useful to also plot a line that summarizes the relationship.
+
+```{r}
+#| message: false
+ggplot(mtcars, aes(x = wt, y = mpg)) +
+  geom_point(alpha = .5) +
+  geom_smooth(
+    method = "lm",
+    alpha = .25,
+    color = "black"
+  ) +
+  theme_minimal()
+```
